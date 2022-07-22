@@ -1,0 +1,40 @@
+.titleOfGame_mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.team_container {
+  height: 45px;
+  width: 45px;
+  overflow: hidden;
+  border: solid white 3px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag_img {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+}
+
+.teamName_span {
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3BC68D;
+}
+
+.titleOfCompetition_container {
+  border: solid white 3px;
+  padding: 6px;
+  border-radius: 10px;
+}
+

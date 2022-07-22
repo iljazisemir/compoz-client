@@ -1,0 +1,77 @@
+.listOfClues_container {
+    display: flex;
+}
+
+.clue_container {
+    height: 35px;
+    width: 40px;
+    padding: 5px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #ffd300;
+    cursor: pointer;
+}
+
+.clue_container:hover {
+    border: white solid 2px;
+}
+
+.clueActivated_container {
+    height: 35px;
+    width: 40px;
+    padding: 5px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #ffd300;
+    opacity: 0.4;
+    cursor:default;
+}
+
+.choiceOfClues_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.choiceOfClue_container {
+    height: 35px;
+    width: 50px;
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #ffd300;
+    cursor: pointer;
+}
+
+.choiceOfClue_container:hover {
+    border: white solid 2px;
+}
+
+.textFirstLetterInChoiceClue_span {
+    margin-bottom: -10px;
+}
+
+.clueDisabled {
+    height: 35px;
+    width: 50px;
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #ffd300;
+    font-size: 15px;
+    opacity: 0.4;
+    cursor:default;
+}

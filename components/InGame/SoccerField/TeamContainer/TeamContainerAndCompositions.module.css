@@ -1,0 +1,326 @@
+/* PLAYER */
+
+.player_container {
+    width: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.playerPosition_container {
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    font-size: 8px;
+}
+
+.playerNumber_container {
+    position: absolute;
+    top: 8%;
+    left: 12%;
+    font-size: 9px;
+}
+
+.jersey_svg {
+    height: 40px;
+    margin-bottom: -10px;
+}
+
+.playerToFind_input{
+    text-align: center;
+    max-width: 55px;
+    height: 18px;
+    outline: none;
+    font-size: 11px;
+    padding: 0px 4px;
+    background-color: #3BC68D;
+    border-radius: 6px;
+    border: none;
+    color: white;
+}
+
+.playerToFindNone_input {
+    display: none;
+}
+  
+.playerWithAnswerColor_container {
+    height: 18px;
+    padding: 1px 4px;
+    max-width: 70px;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.listOfClues_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag_img {
+    object-fit: cover;
+    height: 30px;
+    width: 30px;
+}
+
+/* COMPOSITIONS */
+
+/* 4-4-2 */
+.dom442 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      ". . n11 . n10 . ."
+      ". . . . . . ."
+      "n9 . n8 . n7 . n6"
+      ". . . . . . ."
+      "n5 . n4 . n3 . n2"
+      "cDom . . n1 . . flag_team1";
+}
+
+.ext442 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      "cExt . . n1 . . flag_team2"
+      "n2 . n3 . n4 . n5"
+      ". . . . . . ."
+      "n6 . n7 . n8 . n9"
+      ". . . . . . ."
+      ". . n10 . n11 . .";
+}
+
+/* 4-1-4-1 */
+.dom4141 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      ". . . n11 . . ."
+      ". . . . . . ."
+      "n10 . n9 . n8 . n7"
+      ". . . n6 . . ."
+      "n5 . n4 . n3 . n2"
+      "cDom . . n1 . . flag_team1";
+}
+
+.ext4141 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      "cExt . . n1 . . flag_team2"
+      "n2 . n3 . n4 . n5"
+      ". . . n6 . . ."
+      "n7 . n8 . n9 . n10"
+      ". . . . . . ."
+      ". . . n11 . . .";
+}
+
+/* 4-2-3-1 */
+.dom4231 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      ". . . n11 . . ."
+      "n10 . . n9 . . n8"
+      ". . n7 . n6 . ."
+      ". . . . . . ."
+      "n5 . n4 . n3 . n2"
+      "cDom . . n1 . . flag_team1";
+}
+
+.ext4231 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      "cExt . . n1 . . flag_team2"
+      "n2 . n3 . n4 . n5"
+      ". . . . . . ."
+      ". . n6 . n7 . ."
+      "n8 . . n9 . . n10"
+      ". . . n11 . . .";
+}
+
+/* 4-3-3 */
+.dom433 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      "n11 . . n10 . . n9"
+      ". . . . . . ."
+      ". n8 . n7 . n6 ."
+      ". . . . . . ."
+      "n5 . n4 . n3 . n2"
+      "cDom . . n1 . . flag_team1";
+}
+
+.ext433 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+      "cExt . . n1 . . flag_team2"
+      "n2 . n3 . n4 . n5"
+      ". . . . . . ."
+      ". n6 . n7 . n8 ."
+      ". . . . . . ."
+      "n9 . . n10 . . n11";
+}
+
+/* 4-4-1-1 */
+.dom4411 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+    ". . . n11 . . ."
+    ". . . n10 . . ."
+    "n9 . n8 . n7 . n6"
+    ". . . . . . ."
+    "n5 . n4 . n3 . n2"
+    "cDom . . n1 . . flag_team1";
+}
+
+.ext4411 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+    "cExt . . n1 . . flag_team2"
+    "n2 . n3 . n4 . n5"
+    ". . . . . . ."
+    "n6 . n7 . n8 . n9"
+    ". . . n10 . . ."
+    ". . . n11 . . .";
+}
+/* END COMPOSITIONS */
+
+/* GRID */
+.n1, .n2, .n3, .n4, .n5, .n6, .n7, .n8, .n9, .n10, .n11 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.n1 { 
+    grid-area: n1; 
+}
+.n2 { 
+    grid-area: n2; 
+}
+.n3 { 
+    grid-area: n3; 
+}
+.n4 { 
+    grid-area: n4; 
+}
+.n5 { 
+    grid-area: n5; 
+}
+.n6 { 
+    grid-area: n6; 
+}
+.n7 { 
+    grid-area: n7; 
+}
+.n8 { 
+    grid-area: n8; 
+}
+.n9 { 
+    grid-area: n9; 
+}
+.n10 { 
+    grid-area: n10; 
+}
+.n11 { 
+    grid-area: n11; 
+}
+.cDom {
+    grid-area: cDom;
+    margin-top: 25px;
+    margin-left: 5px;
+    font-size: 14px;
+}
+.cExt {
+    grid-area: cExt;
+    font-size: 14px;
+    margin-left: 5px;
+}
+.flag_team1 {
+    grid-area: flag_team1;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: solid white 2px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.flag_team2 {
+    grid-area: flag_team2;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: solid white 2px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+/* GRID*/

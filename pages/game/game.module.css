@@ -1,0 +1,12 @@
+.gamePage_mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+    .gamePage_mainContainer {
+        display: flex;
+        flex-direction: column;
+    }
+  }

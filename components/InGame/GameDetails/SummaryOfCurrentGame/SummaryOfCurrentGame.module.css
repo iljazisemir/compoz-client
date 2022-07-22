@@ -1,0 +1,157 @@
+.summary_mainContainer {
+    height: 83.333333%;
+    padding: 30px;
+    position: relative;
+    background-color: #3BC68D;
+    padding: 5;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.top_mainContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.correctAnswerCounter_container {
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #228b22;
+}
+
+.wrongAnswerCounter_container {
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #ff4040;
+}
+
+.line {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    margin: 20px 0;
+}
+
+.gameActionList_container {
+    overflow-y: auto;
+    height: 285px;
+    padding-right: 1px;
+}
+
+.gameActionList_container::-webkit-scrollbar {
+    width: 4px;
+}
+  
+.gameActionList_container::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+.gameActionList_container::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+.summaryOfGameForObject_container {
+    display: flex;
+    font-size: 15px;
+    flex-wrap: wrap;
+}
+
+.circleAnswerColor_div {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-top: 7px;
+}
+
+.textInSummary_span {
+    margin-right: 5px;
+    font-weight: 800;
+}
+
+.bottom_mainContainer {
+    width: 83%;
+    position: absolute;
+    bottom: 5%;
+}
+
+.bottom_container {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    position: relative;
+}
+
+.eventGame_button {
+    height: 40px;
+    border: solid white 3px;
+    padding: 6px;
+    border-radius: 10px;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+.eventGame_button:hover {
+    background-color: #34d399;
+}
+
+.endGame_container {
+    display: flex;
+    align-items: center;
+}
+
+/* SVG */
+
+.svg_container {
+    border: solid white 3px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg_container:hover {
+    background-color: #34d399;
+}
+
+.svg {
+    height: 20px;
+    width: 20px;
+}
+
+.resume_container div {
+ display: flex;
+ align-items: center;
+ margin-bottom: 5px;
+}
+
+.resume_container span {
+    margin-bottom: 5px;
+}
+   
+
+.flagOfLocalisation_img {
+    height: 18px;
+    width: 22px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.svgInResume {
+    height: 15px;
+    margin-left: 5px;
+}

@@ -1,0 +1,17 @@
+.gameDetails_mainContainer {
+  height: 600px;
+  width: 350px;
+  margin: 0 15px;
+}
+
+@media screen and (max-width: 760px) {
+  .main_container {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main_container {
+    margin-left: 40px;
+  }
+}

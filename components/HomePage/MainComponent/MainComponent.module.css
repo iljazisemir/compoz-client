@@ -1,0 +1,79 @@
+.mainComponent_container {
+  margin-right: 30px;
+  width: 600px;
+  height: 600px;
+}
+
+.top_container {
+  display: flex;
+  height: 10%;
+}
+
+.listOfTab_container {
+  display: flex;
+  width: 100%;
+}
+
+.spaceBetweenTab_div {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+
+.listOfGames_mainContainer {
+  height: 90%;
+  background-color: #3BC68D;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding: 30px 10px;
+}
+
+.listOfGames_container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  align-content: flex-start;
+}
+
+
+.listOfGames_container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.listOfGames_container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.listOfGames_container::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+@media screen and (max-width: 965px) {
+  .mainComponent_container {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .mainComponent_container {
+    width: 350px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mainComponent_container {
+    margin-right: 0px;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .mainComponent_container {
+      width: 300px;
+  }
+}

@@ -1,0 +1,10 @@
+.soccerField_mainContainer {
+  background-image: url("../../../styles/assets/images/150320-ffffff.png");
+  height: 600px;
+  width: 350px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 4px 10px;
+  margin: 20px 15px;
+  position: relative;
+}
