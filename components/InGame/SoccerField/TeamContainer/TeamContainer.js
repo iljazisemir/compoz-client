@@ -269,7 +269,8 @@ export default function TeamContainer({
     }
   };
   const handlerEnterKeyEventForComparedPlayer = (e, team, player) => {
-    if (e.key === "Enter") {
+    // e.preventDefault();
+    if (e.which == 13 || e.which == 10) {
       handleComparedPlayer(team, player);
     }
   };
@@ -366,9 +367,9 @@ export default function TeamContainer({
     });
   };
   // const inputStyle = (answer) => {
-    
+
   // };
- 
+
   return (
     <div className={handleLineUp()}>
       {!isEmpty(playersToFind) &&
