@@ -269,8 +269,7 @@ export default function TeamContainer({
     }
   };
   const handlerEnterKeyEventForComparedPlayer = (e, team, player) => {
-    // e.preventDefault();
-    if (e.which == 13 || e.which == 10) {
+    if (e.which == 13 || e.keyCode == 13) {
       handleComparedPlayer(team, player);
     }
   };
