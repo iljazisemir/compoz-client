@@ -15,7 +15,13 @@ import ClipboardCheckSVG from "../../../../styles/svg/ClipboardCheckSVG";
 
 export default function Share(props) {
   const [copySuccess, setCopySuccess] = useState(false);
-  const textOfShare = `J'ai trouvé ${props.resultOfGame} / 22 joueurs sur CompoZ lors du match historique entre ${props.team1.name} et ${props.team2.name} en ${props.currentGame.title} ! Essaye de faire mieux !`;
+  const textOfShare = `J'ai trouvé ${
+    props.resultOfGame != 0 ? props.resultOfGame : 0
+  } / 22 joueurs sur CompoZ lors du match historique entre ${
+    props.team1.name
+  } et ${props.team2.name} en ${
+    props.currentGame.title
+  } ! Essaye de faire mieux !`;
   const url = `https://compoz.vercel.app/game/${props.currentGame.url}`;
 
   const handlerCopyToClipboard = (textOfShare) => {
