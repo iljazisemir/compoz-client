@@ -9,6 +9,7 @@ import CurrentGameContext from "../../../context/CurrentGameContext";
 import TittleOfGame from "./TitleOfGame/TittleOfGame";
 import TabInCurrentGame from "./TabInGameDetails/TabInGameDetails";
 import SummaryOfCurrentGame from "./SummaryOfCurrentGame/SummaryOfCurrentGame";
+import ExplanationRules from "../../HomePage/Rules/ExplanationRules";
 
 export default function GameDetails() {
   const currentGameContextValue = useContext(CurrentGameContext);
@@ -37,13 +38,8 @@ export default function GameDetails() {
         />
       )}
       {rulesTab && (
-        <div className="container h-5/6 bg-emerald-500 bg-opacity-50 p-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          praesentium repellat quidem possimus iure sed, totam maxime, incidunt
-          ducimus vero illum tenetur laudantium aperiam accusantium beatae
-          accusamus ratione, eligendi reprehenderit unde enim quasi a provident
-          doloremque at! Commodi dignissimos quam impedit aperiam non placeat
-          temporibus asperiores minima in! Reiciendis, quia?
+        <div className={styles.rules_container}>
+          <ExplanationRules />
         </div>
       )}
     </div>

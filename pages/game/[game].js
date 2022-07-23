@@ -254,7 +254,7 @@ export default function Game({ currentGame }) {
         "Attention il vous reste une seule erreur possible !",
       ]);
     }
-  }, [wrongAnswerCounter]);
+  }, [wrongAnswerCounter, correctPlayers]);
 
   return (
     <CurrentGameContext.Provider value={currentGameContextValue}>

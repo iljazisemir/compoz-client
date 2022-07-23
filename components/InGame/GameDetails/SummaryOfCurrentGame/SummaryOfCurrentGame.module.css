@@ -133,16 +133,11 @@
     width: 20px;
 }
 
-.resume_container div {
+.resume_container > * {
  display: flex;
  align-items: center;
  margin-bottom: 5px;
 }
-
-.resume_container span {
-    margin-bottom: 5px;
-}
-   
 
 .flagOfLocalisation_img {
     height: 18px;

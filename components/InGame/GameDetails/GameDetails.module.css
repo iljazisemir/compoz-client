@@ -4,6 +4,16 @@
   margin: 0 15px;
 }
 
+.rules_container {
+  height: 83.333333%;
+  padding: 30px;
+  position: relative;
+  background-color: #3BC68D;
+  padding: 1;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
 @media screen and (max-width: 760px) {
   .main_container {
     margin-bottom: 30px;

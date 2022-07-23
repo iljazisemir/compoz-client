@@ -33,7 +33,7 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
 
     settingsContextValue.setSummaryOfGame([
       ...settingsContextValue.summaryOfGame,
-      "La partie commence ! Bonne chance !",
+      "Le match commence !",
     ]);
   };
 
@@ -44,8 +44,10 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
 
     settingsContextValue.setSummaryOfGame([
       ...settingsContextValue.summaryOfGame,
-      "Fin du jeu ! Vous avez trouvé ",
-      settingsContextValue.correctPlayers.length + " joueurs !",
+      "Fin du jeu !",
+      "Vous avez trouvé " +
+        settingsContextValue.correctPlayers.length +
+        " / 22 joueurs.",
     ]);
   };
 
@@ -72,7 +74,6 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
               <span>Date : {dateParser(currentGame.date)}</span>
               <div>
                 <span>Stade : {currentGame.stadium}</span>
-                {/* <StadiumSVG /> */}
               </div>
               <div>
                 <span>Lieu : {currentGame.localisation}</span>
@@ -85,7 +86,7 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
               <span>
                 Score : {team1.name} {currentGame.score} {team2.name}
               </span>
-              <div>{currentGame.resume}</div>
+              <span>{currentGame.resume}</span>
             </div>
           )}
         {!isEmpty(settingsContextValue.summaryOfGame) &&

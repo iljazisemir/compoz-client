@@ -72,6 +72,7 @@ export default function TeamContainer({
   const handleComparedPlayer = (team, playerToFind) => {
     let newPlayersToFind = [...playersToFind];
     let answerIsWrong = false;
+    let playerAlreadyFound = false;
     for (const player in team.players) {
       if (
         // GOOD PLAYER BUT NOT RIGHT POSITION
@@ -85,31 +86,21 @@ export default function TeamContainer({
             toUpperCaseAndWithoutAccent(team.players[player].lastName) ===
               toUpperCaseAndWithoutAccent(p.lastName)
           ) {
-            console.log(p);
-            playerToFind.answer = "wrong";
-            playerToFind.answerColor = "#ff4040";
-            settingsContextValue.setSummaryOfGame([
-              ...settingsContextValue.summaryOfGame,
-              {
-                answerColor: "#ff4040",
-                player: playerToFind.lastName,
-                teamName: team.name,
-                text: "Joueur déjà trouvé : ",
-              },
-            ]);
-          } else {
-            playerToFind.answer = "warning";
-            playerToFind.answerColor = "#ff9f40";
-            settingsContextValue.setSummaryOfGame([
-              ...settingsContextValue.summaryOfGame,
-              {
-                answerColor: "#ff9f40",
-                player: playerToFind.lastName,
-                teamName: team.name,
-                text: "Mauvais poste : ",
-              },
-            ]);
+            playerAlreadyFound = true;
           }
+          playerToFind.answer = "warning";
+          playerToFind.answerColor = "#ff9f40";
+          settingsContextValue.setSummaryOfGame([
+            ...settingsContextValue.summaryOfGame,
+            {
+              answerColor: "#ff9f40",
+              player: playerToFind.lastName,
+              teamName: team.name,
+              text: !playerAlreadyFound
+                ? "Mauvais poste : "
+                : "Joueur déjà trouvé : ",
+            },
+          ]);
         });
         answerIsWrong = false;
         break;
@@ -363,12 +354,21 @@ export default function TeamContainer({
       );
     }
   };
-  const handlerRevealPlayer = (playerNotFound) => {
+  const handlerRevealPlayer = (player) => {
     let newPlayersToFind = [...playersToFind];
-    playerNotFound.reveal = true;
-    setPlayersToFind(newPlayersToFind);
+    team.players.map((playerNotFound) => {
+      if (player.numberPosition == playerNotFound.numberPosition) {
+        if (settingsContextValue.endOfGame) {
+          playerNotFound.reveal = true;
+          setPlayersToFind(newPlayersToFind);
+        }
+      }
+    });
   };
-
+  // const inputStyle = (answer) => {
+    
+  // };
+ 
   return (
     <div className={handleLineUp()}>
       {!isEmpty(playersToFind) &&
@@ -389,7 +389,11 @@ export default function TeamContainer({
             );
           };
           return (
-            <div className={handleFindPlayerPositionForGridArea()} key={index}>
+            <div
+              className={handleFindPlayerPositionForGridArea()}
+              key={index}
+              onClick={() => handlerRevealPlayer(player)}
+            >
               <div className={styles.player_container}>
                 {team.players.map((teamPlayer) => {
                   if (teamPlayer.numberPosition == player.numberPosition) {
@@ -478,10 +482,7 @@ export default function TeamContainer({
                         player.numberPosition == playerNotFound.numberPosition
                       ) {
                         return (
-                          <div
-                            key={uuidv4()}
-                            onClick={() => handlerRevealPlayer(playerNotFound)}
-                          >
+                          <div key={uuidv4()}>
                             <div
                               className={styles.playerWithAnswerColor_container}
                               style={{
