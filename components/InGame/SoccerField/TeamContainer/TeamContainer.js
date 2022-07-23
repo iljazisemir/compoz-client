@@ -150,6 +150,10 @@ export default function TeamContainer({
         playerToFind.lastName = toUpperCaseAndWithoutAccent(
           team.players[player].lastName
         );
+        settingsContextValue.setCorrectPlayers([
+          ...settingsContextValue.correctPlayers,
+          playerToFind,
+        ]);
         settingsContextValue.setSummaryOfGame([
           ...settingsContextValue.summaryOfGame,
           {

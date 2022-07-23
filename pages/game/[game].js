@@ -244,7 +244,7 @@ export default function Game({ currentGame }) {
   };
 
   useEffect(() => {
-    if (wrongAnswerCounter >= 5) {
+    if (wrongAnswerCounter >= 5 || correctPlayers.length == 22) {
       setGameStarted(false);
       setEndOfGame(true);
     }
