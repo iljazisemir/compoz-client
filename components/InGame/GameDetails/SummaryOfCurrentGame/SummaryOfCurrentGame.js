@@ -138,7 +138,7 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
               </div>
               {openShare && (
                 <Share
-                  resultOfGame={settingsContextValue.correctPlayers}
+                  resultOfGame={settingsContextValue.correctPlayers.length}
                   currentGame={currentGame}
                   team1={team1}
                   team2={team2}
