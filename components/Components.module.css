@@ -4,6 +4,12 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
+}
+
+.title_container {
+    display: flex;
+    align-items: center;
 }
 
 .title {
@@ -13,14 +19,34 @@
     color: white;
 }
 
+.beta_container {
+    border: white solid 2px;
+    border-radius: 5px;
+    padding: 2px;
+    margin-left: 10px;
+}
+
 .footer_container {
     text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.myInfo_container {
+    display: flex;
+    align-items: center;
+}
+
+.svg {
+    height: 15px;
+    margin-left: 8px;
 }
 
 @media screen and (max-width: 700px) {
     .footer_container {
-        font-size: 12px;
+        margin-top: 10px;
+        font-size: 14px;
     }
   }

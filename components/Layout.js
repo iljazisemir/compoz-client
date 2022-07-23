@@ -17,8 +17,9 @@ export default function Layout({ title, children }) {
       </Head>
       <main className={styles.layout_mainContainer}>
         <Link href={"/"}>
-          <a>
+          <a className={styles.title_container}>
             <h1 className={styles.title}>CompoZ</h1>
+            <div className={styles.beta_container}>BÊTA</div>
           </a>
         </Link>
         {children}

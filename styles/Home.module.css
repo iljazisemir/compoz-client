@@ -1,7 +1,7 @@
 .homePage_mainContainer {
   display: flex;
   justify-content: center;
-  margin: 30px 300px;
+  margin: 0px 300px;
 }
 
 @media screen and (max-width: 700px) {
