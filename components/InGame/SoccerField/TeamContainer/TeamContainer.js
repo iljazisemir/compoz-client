@@ -445,13 +445,7 @@ export default function TeamContainer({
                           autoComplete="off"
                           onChange={handlerInputPlayer(index)}
                           value={player.lastName}
-                          onKeyDown={(e) =>
-                            handlerEnterKeyEventForComparedPlayer(
-                              e,
-                              team,
-                              player
-                            )
-                          }
+                          onSubmit={(e) => handleComparedPlayer(team, player)}
                           data-tip="Lovely colors!"
                           data-for={
                             player.lastName + player.numberPosition + team.name
