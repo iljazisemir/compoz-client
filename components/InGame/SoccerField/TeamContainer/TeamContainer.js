@@ -423,7 +423,7 @@ export default function TeamContainer({
                 {settingsContextValue.gameStarted &&
                   (player.answer !== "correct" ? (
                     <>
-                      <form name="loginBox" target="#here" method="post">
+                      <form name="playerToFind" target="#here" method="post">
                         <input
                           type="text"
                           name="playerToFind"
