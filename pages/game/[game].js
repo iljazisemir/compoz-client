@@ -14,186 +14,8 @@ import SoccerField from "../../components/InGame/SoccerField/SoccerField.js";
 import GameDetails from "../../components/InGame/GameDetails/GameDetails.js";
 
 export default function Game({ currentGame }) {
-  const [playersToFindTeam1, setPlayersToFindTeam1] = useState([
-    {
-      numberPosition: 1,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 2,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 3,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 4,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 5,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 6,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 7,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 8,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 9,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 10,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 11,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-  ]);
-  const [playersToFindTeam2, setPlayersToFindTeam2] = useState([
-    {
-      numberPosition: 1,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 2,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 3,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 4,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 5,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 6,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 7,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 8,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 9,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 10,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-    {
-      numberPosition: 11,
-      lastName: "",
-      answer: "",
-      answerColor: "",
-      clues: [],
-      reveal: false,
-    },
-  ]);
+  const [playersToFindTeam1, setPlayersToFindTeam1] = useState([]);
+  const [playersToFindTeam2, setPlayersToFindTeam2] = useState([]);
   const [correctPlayers, setCorrectPlayers] = useState([]);
   const [wrongAnswerCounter, setWrongAnswerCounter] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
@@ -208,6 +30,26 @@ export default function Game({ currentGame }) {
     club: "",
   });
   const [clueActivated, setClueActivated] = useState(false);
+
+  const addPlayerInPlayersToFindArray = () => {
+    let playersToFind = [];
+    for (let i = 1; i <= 11; i++) {
+      playersToFind.push({
+        numberPosition: i,
+        lastName: "",
+        answer: "",
+        answerColor: "",
+        clues: [],
+        reveal: false,
+      });
+    }
+    return playersToFind;
+  };
+
+  useEffect(() => {
+    setPlayersToFindTeam1(addPlayerInPlayersToFindArray());
+    setPlayersToFindTeam2(addPlayerInPlayersToFindArray());
+  }, []);
 
   const currentGameContextValue = {
     currentGame,

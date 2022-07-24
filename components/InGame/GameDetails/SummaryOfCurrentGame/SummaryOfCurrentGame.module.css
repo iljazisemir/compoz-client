@@ -21,6 +21,18 @@
     justify-content: center;
     border-radius: 10px;
     background-color: #228b22;
+    /* opacity: 0.4; */
+}
+
+.correctAnswerCounterDisabled_container {
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #228b22;
+    opacity: 0.4;
 }
 
 .wrongAnswerCounter_container {
@@ -31,6 +43,17 @@
     justify-content: center;
     border-radius: 10px;
     background-color: #ff4040;
+}
+
+.wrongAnswerCounterDisabled_container {
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #ff4040;
+    opacity: 0.4;
 }
 
 .line {

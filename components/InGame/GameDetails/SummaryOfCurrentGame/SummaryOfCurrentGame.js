@@ -51,14 +51,28 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
     ]);
   };
 
+  const style = settingsContextValue.gameStarted ? { opacity: "0.4" } : "";
+
   return (
     <div className={styles.summary_mainContainer}>
       <div className={styles.top_mainContainer}>
-        <div className={styles.correctAnswerCounter_container}>
+        <div
+          className={
+            settingsContextValue.gameStarted
+              ? styles.correctAnswerCounter_container
+              : styles.correctAnswerCounterDisabled_container
+          }
+        >
           {settingsContextValue.correctPlayers.length} / 22
         </div>
         <CluesContainer />
-        <div className={styles.wrongAnswerCounter_container}>
+        <div
+          className={
+            settingsContextValue.gameStarted
+              ? styles.wrongAnswerCounter_container
+              : styles.wrongAnswerCounterDisabled_container
+          }
+        >
           {settingsContextValue.wrongAnswerCounter} / 5
         </div>
       </div>

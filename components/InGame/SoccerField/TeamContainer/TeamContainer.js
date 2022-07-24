@@ -17,7 +17,7 @@ export default function TeamContainer({
 }) {
   const settingsContextValue = useContext(SettingsContext);
   const [listOfWrongAnswers, setListOfWrongAnswers] = useState([]);
-  const inputEl = useRef([]);
+  const inputPlayerRef = useRef([]);
 
   const handleLineUp = () => {
     let composition;
@@ -91,7 +91,7 @@ export default function TeamContainer({
           if (
             p.numberPosition === team.players[player].numberPosition &&
             toUpperCaseAndWithoutAccent(team.players[player].lastName) ===
-              toUpperCaseAndWithoutAccent(p.lastName)
+              toUpperCaseAndWithoutAccent(p.lastName) 
           ) {
             playerAlreadyFound = true;
           }
@@ -397,7 +397,7 @@ export default function TeamContainer({
               onClick={
                 settingsContextValue.endOfGame
                   ? () => handlerRevealPlayer(player)
-                  : () => inputEl.current[index].focus()
+                  : () => inputPlayerRef.current[index].focus()
               }
             >
               <div className={styles.player_container}>
@@ -430,7 +430,7 @@ export default function TeamContainer({
                           type="text"
                           name="playerToFind"
                           ref={(element) => {
-                            inputEl.current[index] = element;
+                            inputPlayerRef.current[index] = element;
                           }}
                           style={{
                             backgroundColor:
