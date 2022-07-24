@@ -45,7 +45,8 @@ export default function TeamContainer({
         return null;
     }
   };
-  const handlerInputPlayer = (index) => (e) => {
+  const handlerInputPlayer = (e, index) => {
+    e.preventDefault();
     let newPlayersToFind = [...playersToFind];
     if (e.target.value.match("^[a-zA-Z-' ]*$") != null) {
       playersToFind[index].lastName = toUpperCaseAndWithoutAccent(
@@ -425,6 +426,7 @@ export default function TeamContainer({
                   (player.answer !== "correct" ? (
                     <>
                       <form
+                        action=""
                         onSubmit={(e) => handleComparedPlayer(e, team, player)}
                       >
                         <input
@@ -446,18 +448,17 @@ export default function TeamContainer({
                               : styles.playerToFind_input
                           }
                           autoComplete="off"
-                          onChange={handlerInputPlayer(index)}
+                          onChange={(e) => handlerInputPlayer(e, index)}
                           value={player.lastName}
                           // onKeyDown={(e) =>
                           //   handlerEnterKeyEventForComparedPlayer(e, team, player)
                           // }
-                          tabIndex="0"
                           data-tip="Lovely colors!"
                           data-for={
                             player.lastName + player.numberPosition + team.name
                           }
                         />
-                        <input type="submit" hidden />
+                        {/* <input type="submit" hidden /> */}
                       </form>
                       {handlerTooltipPlayerClues(player)}
                     </>
