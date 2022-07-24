@@ -69,7 +69,8 @@ export default function TeamContainer({
     }
     setListOfWrongAnswers(newListOfWrongAnswers);
   };
-  const handleComparedPlayer = (team, playerToFind) => {
+  const handleComparedPlayer = (e, team, playerToFind) => {
+    e.preventDefault();
     let newPlayersToFind = [...playersToFind];
     let answerIsWrong = false;
     let playerAlreadyFound = false;
@@ -423,39 +424,41 @@ export default function TeamContainer({
                 {settingsContextValue.gameStarted &&
                   (player.answer !== "correct" ? (
                     <>
-                      {/* <form name="playerToFind" target="#here" method="post"> */}
-                      <input
-                        type="text"
-                        name="playerToFind"
-                        style={{
-                          backgroundColor:
-                            player.answer &&
-                            player.lastName.length > 0 &&
-                            player.answerColor,
-                        }}
-                        className={
-                          settingsContextValue.targetPlayer.target &&
-                          settingsContextValue.targetPlayer.numberPosition ==
-                            player.numberPosition &&
-                          settingsContextValue.targetPlayer.team.toUpperCase() ==
-                            team.name.toUpperCase()
-                            ? styles.playerToFindNone_input
-                            : styles.playerToFind_input
-                        }
-                        autoComplete="off"
-                        onChange={handlerInputPlayer(index)}
-                        value={player.lastName}
-                        onKeyDown={(e) =>
-                          handlerEnterKeyEventForComparedPlayer(e, team, player)
-                        }
-                        tabIndex="0"
-                        data-tip="Lovely colors!"
-                        data-for={
-                          player.lastName + player.numberPosition + team.name
-                        }
-                      />
-                      {/* <input type="submit" hidden />
-                      </form> */}
+                      <form
+                        onSubmit={(e) => handleComparedPlayer(e, team, player)}
+                      >
+                        <input
+                          type="text"
+                          name="playerToFind"
+                          style={{
+                            backgroundColor:
+                              player.answer &&
+                              player.lastName.length > 0 &&
+                              player.answerColor,
+                          }}
+                          className={
+                            settingsContextValue.targetPlayer.target &&
+                            settingsContextValue.targetPlayer.numberPosition ==
+                              player.numberPosition &&
+                            settingsContextValue.targetPlayer.team.toUpperCase() ==
+                              team.name.toUpperCase()
+                              ? styles.playerToFindNone_input
+                              : styles.playerToFind_input
+                          }
+                          autoComplete="off"
+                          onChange={handlerInputPlayer(index)}
+                          value={player.lastName}
+                          // onKeyDown={(e) =>
+                          //   handlerEnterKeyEventForComparedPlayer(e, team, player)
+                          // }
+                          tabIndex="0"
+                          data-tip="Lovely colors!"
+                          data-for={
+                            player.lastName + player.numberPosition + team.name
+                          }
+                        />
+                        <input type="submit" hidden />
+                      </form>
                       {handlerTooltipPlayerClues(player)}
                     </>
                   ) : (
