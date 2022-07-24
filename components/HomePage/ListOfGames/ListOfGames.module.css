@@ -65,3 +65,25 @@
     margin:10px;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .game_container {
+    height: 100px;
+    width: 130px;
+    margin:10px;
+    font-size: 10px;
+  }
+  .team_container {
+    height: 35px;
+    width: 35px;
+    border: solid white 2px;
+  }
+  .flag_img {
+    height: 35px;
+    width: 35px;
+  }
+  .bottom_container {
+    height: 25px;
+    font-size: 13px;
+  }
+}

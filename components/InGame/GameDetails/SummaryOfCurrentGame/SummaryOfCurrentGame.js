@@ -51,8 +51,6 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
     ]);
   };
 
-  const style = settingsContextValue.gameStarted ? { opacity: "0.4" } : "";
-
   return (
     <div className={styles.summary_mainContainer}>
       <div className={styles.top_mainContainer}>
