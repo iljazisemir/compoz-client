@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { isEmpty, toUpperCaseAndWithoutAccent } from "../../../Utils";
 import styles from "./TeamContainerAndCompositions.module.css";
 import ReactTooltip from "react-tooltip";
@@ -17,6 +17,7 @@ export default function TeamContainer({
 }) {
   const settingsContextValue = useContext(SettingsContext);
   const [listOfWrongAnswers, setListOfWrongAnswers] = useState([]);
+  const inputEl = useRef([]);
 
   const handleLineUp = () => {
     let composition;
@@ -277,11 +278,6 @@ export default function TeamContainer({
       return false;
     }
   };
-  const handlerEnterKeyEventForComparedPlayer = (e, team, player) => {
-    if (e && e.keyCode == 13) {
-      handleComparedPlayer(team, player);
-    }
-  };
   const handlePlayerNumber = (player) => {
     let revealIsTrue = false;
     team.players.map((p) => {
@@ -374,9 +370,6 @@ export default function TeamContainer({
       }
     });
   };
-  // const inputStyle = (answer) => {
-
-  // };
 
   return (
     <div className={handleLineUp()}>
@@ -401,7 +394,11 @@ export default function TeamContainer({
             <div
               className={handleFindPlayerPositionForGridArea()}
               key={index}
-              onClick={() => handlerRevealPlayer(player)}
+              onClick={
+                settingsContextValue.endOfGame
+                  ? () => handlerRevealPlayer(player)
+                  : () => inputEl.current[index].focus()
+              }
             >
               <div className={styles.player_container}>
                 {team.players.map((teamPlayer) => {
@@ -432,6 +429,9 @@ export default function TeamContainer({
                         <input
                           type="text"
                           name="playerToFind"
+                          ref={(element) => {
+                            inputEl.current[index] = element;
+                          }}
                           style={{
                             backgroundColor:
                               player.answer &&
@@ -450,15 +450,11 @@ export default function TeamContainer({
                           autoComplete="off"
                           onChange={(e) => handlerInputPlayer(e, index)}
                           value={player.lastName}
-                          // onKeyDown={(e) =>
-                          //   handlerEnterKeyEventForComparedPlayer(e, team, player)
-                          // }
                           data-tip="Lovely colors!"
                           data-for={
                             player.lastName + player.numberPosition + team.name
                           }
                         />
-                        {/* <input type="submit" hidden /> */}
                       </form>
                       {handlerTooltipPlayerClues(player)}
                     </>
