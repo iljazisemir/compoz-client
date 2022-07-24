@@ -78,7 +78,11 @@ export default function TeamContainer({
         // GOOD PLAYER BUT NOT RIGHT POSITION
         team.players[player].numberPosition !== playerToFind.numberPosition &&
         toUpperCaseAndWithoutAccent(team.players[player].lastName) ==
-          toUpperCaseAndWithoutAccent(playerToFind.lastName)
+          toUpperCaseAndWithoutAccent(playerToFind.lastName) &&
+        handleSpellCheck(
+          toUpperCaseAndWithoutAccent(playerToFind.lastName),
+          toUpperCaseAndWithoutAccent(team.players[player].lastName)
+        )
       ) {
         playersToFind.map((p) => {
           if (
@@ -217,6 +221,7 @@ export default function TeamContainer({
     setPlayersToFind(newPlayersToFind);
   };
   const handleSpellCheck = (playerToFind, thePlayer) => {
+    console.log(playerToFind, thePlayer);
     let arrayOfPlayerToFindLettersChart = playerToFind.split("").sort();
     let arrayOfPlayerLettersChart = thePlayer.split("").sort();
     let numberOfFaults = 0;
@@ -266,6 +271,8 @@ export default function TeamContainer({
 
     if ((numberOfFaults / playerNameLength) * 100 <= 30) {
       return true;
+    } else {
+      return false;
     }
   };
   const handlerEnterKeyEventForComparedPlayer = (e, team, player) => {
@@ -445,6 +452,7 @@ export default function TeamContainer({
                           player.lastName + player.numberPosition + team.name
                         }
                       />
+                      <input type="submit" hidden />
                       {handlerTooltipPlayerClues(player)}
                     </>
                   ) : (
