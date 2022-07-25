@@ -91,7 +91,7 @@ export default function TeamContainer({
           if (
             p.numberPosition === team.players[player].numberPosition &&
             toUpperCaseAndWithoutAccent(team.players[player].lastName) ===
-              toUpperCaseAndWithoutAccent(p.lastName) 
+              toUpperCaseAndWithoutAccent(p.lastName)
           ) {
             playerAlreadyFound = true;
           }
@@ -397,7 +397,9 @@ export default function TeamContainer({
               onClick={
                 settingsContextValue.endOfGame
                   ? () => handlerRevealPlayer(player)
-                  : () => inputPlayerRef.current[index].focus()
+                  : () =>
+                      !settingsContextValue.clueActivated &&
+                      inputPlayerRef.current[index].focus()
               }
             >
               <div className={styles.player_container}>
