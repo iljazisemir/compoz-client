@@ -6,12 +6,24 @@
 
 .rules_container {
   height: 83.333333%;
-  padding: 30px;
-  position: relative;
   background-color: #3BC68D;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
+  overflow-y: auto;
+  padding: 0px 20px ;
 }
+
+.rules_container::-webkit-scrollbar {
+  width: 4px;
+}
+ 
+.rules_container::-webkit-scrollbar-track {
+ background: transparent;
+}
+ 
+.rules_container::-webkit-scrollbar-thumb {
+   background: white;
+ }
 
 @media screen and (max-width: 760px) {
   .main_container {

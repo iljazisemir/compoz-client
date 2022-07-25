@@ -30,6 +30,10 @@ export default function Game({ currentGame }) {
     club: "",
   });
   const [clueActivated, setClueActivated] = useState(false);
+  const [clue1, setClue1] = useState(true);
+  const [clue2, setClue2] = useState(true);
+  const [clue3, setClue3] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   const addPlayerInPlayersToFindArray = () => {
     let playersToFind = [];
@@ -83,6 +87,14 @@ export default function Game({ currentGame }) {
     setTargetPlayer,
     clueActivated,
     setClueActivated,
+    clue1,
+    setClue1,
+    clue2,
+    setClue2,
+    clue3,
+    setClue3,
+    isMounted,
+    setIsMounted,
   };
 
   useEffect(() => {
