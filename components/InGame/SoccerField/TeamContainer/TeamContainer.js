@@ -341,8 +341,8 @@ export default function TeamContainer({
       </ReactTooltip>
     );
   };
-  const handlerTooltipPlayerClues = (player) => {
-    if (player.clues.length > 0) {
+  const handlerTooltipPlayerClues = (player, index) => {
+    if (player.clues.length > 0 || inputPlayerRef.current[index].focus()) {
       return (
         <ReactTooltip
           id={player.lastName + player.numberPosition + team.name}
@@ -458,7 +458,7 @@ export default function TeamContainer({
                           }
                         />
                       </form>
-                      {handlerTooltipPlayerClues(player)}
+                      {handlerTooltipPlayerClues(player, index)}
                     </>
                   ) : (
                     <>
