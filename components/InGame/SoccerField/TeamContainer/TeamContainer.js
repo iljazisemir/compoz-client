@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 import { v4 as uuidv4 } from "uuid";
 
 // CONTEXTS
-import SettingsContext from "../../../../context/SettingsContext";
+import { SettingsContext } from "../../../../context/SettingsContext";
 
 // SVG
 import JerseySvg from "../../../../styles/svg/JerseySVG";
@@ -224,7 +224,6 @@ export default function TeamContainer({
     setPlayersToFind(newPlayersToFind);
   };
   const handleSpellCheck = (playerToFind, thePlayer) => {
-    console.log(playerToFind, thePlayer);
     let arrayOfPlayerToFindLettersChart = playerToFind.split("").sort();
     let arrayOfPlayerLettersChart = thePlayer.split("").sort();
     let numberOfFaults = 0;
@@ -342,7 +341,10 @@ export default function TeamContainer({
     );
   };
   const handlerTooltipPlayerClues = (player, index) => {
-    if (player.clues.length > 0) {
+    if (
+      player.clues.length > 0
+      // || inputPlayerRef.current[index].focus()
+    ) {
       return (
         <ReactTooltip
           id={player.lastName + player.numberPosition + team.name}

@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import styles from "./SoccerField.module.css";
-import { v4 as uuidv4 } from "uuid";
 
 // CONTEXTS
 import TeamsContext from "../../../context/TeamsContext";
-import PlayersToFindContext from "../../../context/PlayersToFindContext";
+import { PlayersToFindContext } from "../../../context/PlayersToFindContext";
 
 // COMPONENTS
 import TeamContainer from "./TeamContainer/TeamContainer";
@@ -14,7 +13,7 @@ export default function SoccerField() {
   const playersToFindContextValue = useContext(PlayersToFindContext);
 
   return (
-    <div className={styles.soccerField_mainContainer} >
+    <div className={styles.soccerField_mainContainer}>
       <TeamContainer
         team={teamsContextValue.team2}
         playersToFind={playersToFindContextValue.playersToFindTeam2}

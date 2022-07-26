@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./TabInGameDetails.module.css";
 
-// CONTEXTS
-import SettingsContext from "../../../../context/SettingsContext";
-
 export default function TabInCurrentGame(props) {
-  const settingsContextValue = useContext(SettingsContext);
   const currentGameTabOpen = () => {
     props.setCurrentGameTab(true);
     props.setRulesTab(false);

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
 // CONTEXTS
-import SettingsContext from "../../../../context/SettingsContext";
+import { SettingsContext } from "../../../../context/SettingsContext";
 
 // COMPONENTS
 import CluesContainer from "../Clues/CluesContainer";

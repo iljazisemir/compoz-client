@@ -3,7 +3,7 @@ import styles from "./Clues.module.css";
 import ReactTooltip from "react-tooltip";
 
 // CONTEXTS
-import SettingsContext from "../../../../context/SettingsContext";
+import { SettingsContext } from "../../../../context/SettingsContext";
 
 export default function CluesContainer() {
   const settingsContextValue = useContext(SettingsContext);

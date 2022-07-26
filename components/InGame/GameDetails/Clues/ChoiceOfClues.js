@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import styles from "./Clues.module.css";
 
 // CONTEXT
-import PlayersToFindContext from "../../../../context/PlayersToFindContext";
-import SettingsContext from "../../../../context/SettingsContext";
+import { PlayersToFindContext } from "../../../../context/PlayersToFindContext";
+import { SettingsContext } from "../../../../context/SettingsContext";
 import TeamsContext from "../../../../context/TeamsContext";
 
 export default function ChoiceOfClues() {

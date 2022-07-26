@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styles from "./GameDetails.module.css";
 
 // CONTEXTS
 import TeamsContext from "../../../context/TeamsContext";
 import CurrentGameContext from "../../../context/CurrentGameContext";
+import { SettingsContext } from "../../../context/SettingsContext";
 
 // COMPONENTS
 import TittleOfGame from "./TitleOfGame/TittleOfGame";
@@ -14,8 +15,28 @@ import ExplanationRules from "../../HomePage/Rules/ExplanationRules";
 export default function GameDetails() {
   const currentGameContextValue = useContext(CurrentGameContext);
   const teamsContextValue = useContext(TeamsContext);
+  const settingsContextValue = useContext(SettingsContext);
   const [currentGameTab, setCurrentGameTab] = useState(true);
   const [rulesTab, setRulesTab] = useState(false);
+
+  useEffect(() => {
+    if (
+      settingsContextValue.wrongAnswerCounter >= 5 ||
+      settingsContextValue.correctPlayers.length == 22
+    ) {
+      settingsContextValue.setGameStarted(false);
+      settingsContextValue.setEndOfGame(true);
+    }
+    if (settingsContextValue.wrongAnswerCounter == 4) {
+      settingsContextValue.setSummaryOfGame([
+        ...settingsContextValue.summaryOfGame,
+        "Attention il vous reste une seule erreur possible !",
+      ]);
+    }
+  }, [
+    settingsContextValue.wrongAnswerCounter,
+    settingsContextValue.correctPlayers,
+  ]);
 
   return (
     <div className={styles.gameDetails_mainContainer}>
