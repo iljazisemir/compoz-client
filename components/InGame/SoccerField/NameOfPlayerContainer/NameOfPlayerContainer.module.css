@@ -1,0 +1,10 @@
+.playerWithAnswerColor_container {
+    height: 18px;
+    padding: 1px 4px;
+    max-width: 70px;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    border-radius: 6px;
+    font-size: 13px;
+}

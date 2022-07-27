@@ -2,22 +2,18 @@ import React, { useContext } from "react";
 import styles from "./Clues.module.css";
 
 // CONTEXT
-import { PlayersToFindContext } from "../../../../context/PlayersToFindContext";
 import { SettingsContext } from "../../../../context/SettingsContext";
-import TeamsContext from "../../../../context/TeamsContext";
 
-export default function ChoiceOfClues() {
-  const teamsContextValue = useContext(TeamsContext);
+export default function ChoiceOfClues({ currentGame, playersToFindTeams }) {
   const settingsContextValue = useContext(SettingsContext);
-  const playersToFindContextValue = useContext(PlayersToFindContext);
 
   const handleClue = (targetElement, targetPlayer, playersToFindTeam) => {
     let clueText = "";
-    if (targetElement == targetPlayer.firstLetter) {
+    if (targetElement === targetPlayer.firstLetter) {
       clueText = "Première lettre : ";
-    } else if (targetElement == targetPlayer.number) {
+    } else if (targetElement === targetPlayer.number) {
       clueText = "Numéro du maillot : ";
-    } else if (targetElement == targetPlayer.club) {
+    } else if (targetElement === targetPlayer.club) {
       clueText = "Club du joueur : ";
     }
     settingsContextValue.setSummaryOfGame([
@@ -57,7 +53,7 @@ export default function ChoiceOfClues() {
     playersToFindTeam.map((playerToFind) => {
       if (playerToFind.numberPosition === targetPlayer.numberPosition) {
         playerToFind.clues.map((clue) => {
-          if (clue.clue == targetElement) {
+          if (clue.clue === targetElement) {
             checkChoiceOfClueIsAlreadyUsed = true;
           }
         });
@@ -70,7 +66,7 @@ export default function ChoiceOfClues() {
           handleClue(targetElement, targetPlayer, playersToFindTeam)
         }
       >
-        {targetElement == targetPlayer.firstLetter ? (
+        {targetElement === targetPlayer.firstLetter ? (
           <>
             <span className={styles.textFirstLetterInChoiceClue_span}>
               1<sup>re</sup>
@@ -83,7 +79,7 @@ export default function ChoiceOfClues() {
       </div>
     ) : (
       <div className={styles.clueDisabled}>
-        {targetElement == targetPlayer.firstLetter ? (
+        {targetElement === targetPlayer.firstLetter ? (
           <>
             <span className={styles.textFirstLetterInChoiceClue_span}>
               1<sup>re</sup>
@@ -106,28 +102,28 @@ export default function ChoiceOfClues() {
             {handleChoiceOfClueIsAlreadyUsed(
               settingsContextValue.targetPlayer.firstLetter,
               settingsContextValue.targetPlayer,
-              settingsContextValue.targetPlayer.team ==
-                teamsContextValue.team1.name
-                ? playersToFindContextValue.playersToFindTeam1
-                : playersToFindContextValue.playersToFindTeam2,
+              settingsContextValue.targetPlayer.team ===
+                currentGame.teams[0].name
+                ? playersToFindTeams.playersToFindTeam1
+                : playersToFindTeams.playersToFindTeam2,
               "1re Lettre"
             )}
             {handleChoiceOfClueIsAlreadyUsed(
               settingsContextValue.targetPlayer.number,
               settingsContextValue.targetPlayer,
-              settingsContextValue.targetPlayer.team ==
-                teamsContextValue.team1.name
-                ? playersToFindContextValue.playersToFindTeam1
-                : playersToFindContextValue.playersToFindTeam2,
+              settingsContextValue.targetPlayer.team ===
+                currentGame.teams[0].name
+                ? playersToFindTeams.playersToFindTeam1
+                : playersToFindTeams.playersToFindTeam2,
               "N°"
             )}
             {handleChoiceOfClueIsAlreadyUsed(
               settingsContextValue.targetPlayer.club,
               settingsContextValue.targetPlayer,
-              settingsContextValue.targetPlayer.team ==
-                teamsContextValue.team1.name
-                ? playersToFindContextValue.playersToFindTeam1
-                : playersToFindContextValue.playersToFindTeam2,
+              settingsContextValue.targetPlayer.team ===
+                currentGame.teams[0].name
+                ? playersToFindTeams.playersToFindTeam1
+                : playersToFindTeams.playersToFindTeam2,
               "Club"
             )}
           </div>

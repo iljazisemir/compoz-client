@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import localStorage from "localStorage";
 
 const SettingsContext = createContext();
 
@@ -17,9 +18,11 @@ const SettingsContextProvider = ({ children }) => {
     club: "",
   });
   const [clueActivated, setClueActivated] = useState(false);
-  const [clue1, setClue1] = useState(true);
-  const [clue2, setClue2] = useState(true);
-  const [clue3, setClue3] = useState(true);
+  const [clues, setClues] = useState({
+    clue1: true,
+    clue2: true,
+    clue3: true,
+  });
   const [isMounted, setIsMounted] = useState(false);
 
   const settingsContextValue = {
@@ -37,15 +40,15 @@ const SettingsContextProvider = ({ children }) => {
     setTargetPlayer,
     clueActivated,
     setClueActivated,
-    clue1,
-    setClue1,
-    clue2,
-    setClue2,
-    clue3,
-    setClue3,
+    clues,
+    setClues,
     isMounted,
     setIsMounted,
   };
+
+  // useEffect(() => {
+  //   localStorage.setItem("settings", JSON.stringify(settingsContextValue));
+  // }, [settingsContextValue]);
 
   return (
     <SettingsContext.Provider value={settingsContextValue}>

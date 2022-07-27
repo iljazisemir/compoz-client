@@ -1,0 +1,16 @@
+.playerToFind_input{
+    text-align: center;
+    max-width: 55px;
+    height: 18px;
+    outline: none;
+    font-size: 11px;
+    padding: 0px 4px;
+    background-color: #3BC68D;
+    border-radius: 6px;
+    border: none;
+    color: white;
+}
+
+.playerToFindNone_input {
+    display: none;
+}

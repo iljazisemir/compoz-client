@@ -2,8 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import styles from "./GameDetails.module.css";
 
 // CONTEXTS
-import TeamsContext from "../../../context/TeamsContext";
-import CurrentGameContext from "../../../context/CurrentGameContext";
 import { SettingsContext } from "../../../context/SettingsContext";
 
 // COMPONENTS
@@ -12,9 +10,7 @@ import TabInCurrentGame from "./TabInGameDetails/TabInGameDetails";
 import SummaryOfCurrentGame from "./SummaryOfCurrentGame/SummaryOfCurrentGame";
 import ExplanationRules from "../../HomePage/Rules/ExplanationRules";
 
-export default function GameDetails() {
-  const currentGameContextValue = useContext(CurrentGameContext);
-  const teamsContextValue = useContext(TeamsContext);
+export default function GameDetails({ currentGame, playersToFindTeams }) {
   const settingsContextValue = useContext(SettingsContext);
   const [currentGameTab, setCurrentGameTab] = useState(true);
   const [rulesTab, setRulesTab] = useState(false);
@@ -22,12 +18,12 @@ export default function GameDetails() {
   useEffect(() => {
     if (
       settingsContextValue.wrongAnswerCounter >= 5 ||
-      settingsContextValue.correctPlayers.length == 22
+      settingsContextValue.correctPlayers.length === 22
     ) {
       settingsContextValue.setGameStarted(false);
       settingsContextValue.setEndOfGame(true);
     }
-    if (settingsContextValue.wrongAnswerCounter == 4) {
+    if (settingsContextValue.wrongAnswerCounter === 4) {
       settingsContextValue.setSummaryOfGame([
         ...settingsContextValue.summaryOfGame,
         "Attention il vous reste une seule erreur possible !",
@@ -41,9 +37,9 @@ export default function GameDetails() {
   return (
     <div className={styles.gameDetails_mainContainer}>
       <TittleOfGame
-        team1={teamsContextValue.team1}
-        team2={teamsContextValue.team2}
-        currentGame={currentGameContextValue.currentGame}
+        team1={currentGame.teams[0]}
+        team2={currentGame.teams[1]}
+        currentGame={currentGame}
       />
       <TabInCurrentGame
         currentGameTab={currentGameTab}
@@ -53,9 +49,10 @@ export default function GameDetails() {
       />
       {currentGameTab && (
         <SummaryOfCurrentGame
-          currentGame={currentGameContextValue.currentGame}
-          team1={teamsContextValue.team1}
-          team2={teamsContextValue.team2}
+          currentGame={currentGame}
+          team1={currentGame.teams[0]}
+          team2={currentGame.teams[1]}
+          playersToFindTeams={playersToFindTeams}
         />
       )}
       {rulesTab && (

@@ -1,4 +1,3 @@
-import axios from "axios";
 import styles from "../styles/Home.module.css";
 
 // COMPONENTS
@@ -20,7 +19,8 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const { data } = await axios.get(`${process.env.NEXT_APP_API_URL}/api/game`);
+  const res = await fetch(`${process.env.NEXT_APP_API_URL}/api/game`);
+  const data = await res.json();
 
   return {
     props: {

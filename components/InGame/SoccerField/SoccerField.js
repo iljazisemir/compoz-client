@@ -1,28 +1,21 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./SoccerField.module.css";
-
-// CONTEXTS
-import TeamsContext from "../../../context/TeamsContext";
-import { PlayersToFindContext } from "../../../context/PlayersToFindContext";
 
 // COMPONENTS
 import TeamContainer from "./TeamContainer/TeamContainer";
 
-export default function SoccerField() {
-  const teamsContextValue = useContext(TeamsContext);
-  const playersToFindContextValue = useContext(PlayersToFindContext);
-
+export default function SoccerField({ currentGame, playersToFindTeams }) {
   return (
     <div className={styles.soccerField_mainContainer}>
       <TeamContainer
-        team={teamsContextValue.team2}
-        playersToFind={playersToFindContextValue.playersToFindTeam2}
-        setPlayersToFind={playersToFindContextValue.setPlayersToFindTeam2}
+        team={currentGame.teams[1]}
+        playersToFind={playersToFindTeams.playersToFindTeam2}
+        setPlayersToFind={playersToFindTeams.setPlayersToFindTeam2}
       />
       <TeamContainer
-        team={teamsContextValue.team1}
-        playersToFind={playersToFindContextValue.playersToFindTeam1}
-        setPlayersToFind={playersToFindContextValue.setPlayersToFindTeam1}
+        team={currentGame.teams[0]}
+        playersToFind={playersToFindTeams.playersToFindTeam1}
+        setPlayersToFind={playersToFindTeams.setPlayersToFindTeam1}
       />
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./SummaryOfCurrentGame.module.css";
 import { isEmpty, dateParser } from "../../../Utils.js";
-import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
 // CONTEXTS
@@ -18,7 +17,12 @@ import ShareSVG from "../../../../styles/svg/ShareSVG";
 import Share from "../Share/Share";
 import TrophySVG from "../../../../styles/svg/TrophySVG";
 
-export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
+export default function SummaryOfCurrentGame({
+  currentGame,
+  team1,
+  team2,
+  playersToFindTeams,
+}) {
   const settingsContextValue = useContext(SettingsContext);
   const [openShare, setOpenShare] = useState(false);
 
@@ -102,11 +106,11 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
             </div>
           )}
         {!isEmpty(settingsContextValue.summaryOfGame) &&
-          settingsContextValue.summaryOfGame.map((action) => {
+          settingsContextValue.summaryOfGame.map((action, index) => {
             return typeof action === "object" ? (
               <div
                 className={styles.summaryOfGameForObject_container}
-                key={uuidv4()}
+                key={index}
               >
                 <div
                   className={styles.circleAnswerColor_div}
@@ -116,7 +120,9 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
                   className={styles.textInSummary_span}
                   style={{
                     color:
-                      action.teamName == team1.name ? team1.color : team2.color,
+                      action.teamName === team1.name
+                        ? team1.color
+                        : team2.color,
                   }}
                 >
                   {action.teamName.toUpperCase()}
@@ -132,10 +138,13 @@ export default function SummaryOfCurrentGame({ currentGame, team1, team2 }) {
                 </span>
               </div>
             ) : (
-              <div key={uuidv4()}>{action}</div>
+              <div key={index}>{action}</div>
             );
           })}
-        <ChoiceOfClues />
+        <ChoiceOfClues
+          currentGame={currentGame}
+          playersToFindTeams={playersToFindTeams}
+        />
       </div>
       <div className={styles.bottom_mainContainer}>
         <div className={styles.line}></div>

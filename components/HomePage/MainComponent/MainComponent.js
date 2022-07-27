@@ -1,62 +1,44 @@
 import React, { useState } from "react";
-import { isEmpty } from "../../Utils";
-import { v4 as uuidv4 } from "uuid";
-import Link from "next/link";
+
 import styles from "./MainComponent.module.css";
 
 // COMPONENTS
 import TabInHomePage from "../TabInHomePage/TabInHomePage";
 import ListOfGames from "../ListOfGames/ListOfGames";
 
+const COMPETITIONS = ["Coupe du Monde", "Euro"];
+
 export default function MainComponent({ games }) {
-  const [worldCupTab, setWorldCupTab] = useState(true);
-  const [euroCupTab, setEuroCupTab] = useState(false);
+  const [selectedCompetition, setSelectedCompetition] = useState(
+    COMPETITIONS[0]
+  );
 
-  const openWorldCupTab = () => {
-    setWorldCupTab(true);
-    setEuroCupTab(false);
-  };
-
-  const openEuroCupTab = () => {
-    setWorldCupTab(false);
-    setEuroCupTab(true);
-  };
+  const filteredGames = games?.filter(
+    (game) => game.competition === selectedCompetition
+  );
 
   return (
     <div className={styles.mainComponent_container}>
       <div className={styles.top_container}>
         <div className={styles.listOfTab_container}>
-          <TabInHomePage
-            openTabFunction={openWorldCupTab}
-            targetTab={worldCupTab}
-          >
-            Coupe du Monde
-          </TabInHomePage>
-          <div className={styles.spaceBetweenTab_div}></div>
-          <TabInHomePage
-            openTabFunction={openEuroCupTab}
-            targetTab={euroCupTab}
-          >
-            Euro
-          </TabInHomePage>
+          {COMPETITIONS.map((competition, index) => (
+            <TabInHomePage
+              key={competition}
+              onTabClick={() => setSelectedCompetition(competition)}
+              selectedTab={selectedCompetition === competition}
+              COMPETITIONS={COMPETITIONS}
+              index={index}
+            >
+              {competition}
+            </TabInHomePage>
+          ))}
         </div>
       </div>
       <div className={styles.listOfGames_mainContainer}>
         <div className={styles.listOfGames_container}>
-          {!isEmpty(games) &&
-            worldCupTab &&
-            games.map((game) => {
-              if (game.competition == "Coupe du Monde") {
-                return <ListOfGames currentGame={game} key={uuidv4()} />;
-              }
-            })}
-          {!isEmpty(games) &&
-            euroCupTab &&
-            games.map((game) => {
-              if (game.competition == "Euro") {
-                return <ListOfGames currentGame={game} key={uuidv4()} />;
-              }
-            })}
+          {filteredGames?.map((game) => (
+            <ListOfGames key={game._id} currentGame={game} />
+          ))}
         </div>
       </div>
     </div>

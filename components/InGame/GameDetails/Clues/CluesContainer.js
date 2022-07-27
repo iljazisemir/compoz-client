@@ -28,16 +28,28 @@ export default function CluesContainer() {
       settingsContextValue.clueActivated === false
     ) {
       settingsContextValue.setClueActivated(true);
-      if (n === 1) settingsContextValue.setClue1(false);
-      if (n === 2) settingsContextValue.setClue2(false);
-      if (n === 3) settingsContextValue.setClue3(false);
+      if (n === 1)
+        settingsContextValue.setClues({
+          ...settingsContextValue.clues,
+          clue1: false,
+        });
+      if (n === 2)
+        settingsContextValue.setClues({
+          ...settingsContextValue.clues,
+          clue2: false,
+        });
+      if (n === 3)
+        settingsContextValue.setClues({
+          ...settingsContextValue.clues,
+          clue3: false,
+        });
     }
   };
 
   return (
     <>
       <div className={styles.listOfClues_container}>
-        {settingsContextValue.clue1 &&
+        {settingsContextValue.clues.clue1 &&
         !settingsContextValue.endOfGame &&
         settingsContextValue.gameStarted ? (
           <div
@@ -51,7 +63,7 @@ export default function CluesContainer() {
         ) : (
           <div className={styles.clueActivated_container}>1</div>
         )}
-        {settingsContextValue.clue2 &&
+        {settingsContextValue.clues.clue2 &&
         !settingsContextValue.endOfGame &&
         settingsContextValue.gameStarted ? (
           <div
@@ -65,7 +77,7 @@ export default function CluesContainer() {
         ) : (
           <div className={styles.clueActivated_container}>2</div>
         )}
-        {settingsContextValue.clue3 &&
+        {settingsContextValue.clues.clue3 &&
         !settingsContextValue.endOfGame &&
         settingsContextValue.gameStarted ? (
           <div

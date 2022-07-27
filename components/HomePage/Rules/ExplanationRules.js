@@ -61,10 +61,8 @@ export default function ExplanationRules() {
           <div>Joueur déjà essayé</div>
         </div>
       </div>
-      <p>
-        <div>Un bon joueur vous donne 1 point</div>
-        <div>Un mauvais joueur vous donne une erreur</div>
-      </p>
+      <p>Un bon joueur vous donne 1 point</p>
+      <p>Un mauvais joueur vous donne une erreur</p>
       <p>
         Vous devez trouver 22 joueurs pour 5 erreurs maximales, faites attention
         !

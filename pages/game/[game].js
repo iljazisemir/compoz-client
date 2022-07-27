@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import styles from "./game.module.css";
 
 // CONTEXTS
-import TeamsContext from "../../context/TeamsContext";
-import CurrentGameContext from "../../context/CurrentGameContext";
-import { PlayersToFindContextProvider } from "../../context/PlayersToFindContext";
 import { SettingsContextProvider } from "../../context/SettingsContext";
 
 // COMPONENTS
@@ -14,41 +10,59 @@ import SoccerField from "../../components/InGame/SoccerField/SoccerField.js";
 import GameDetails from "../../components/InGame/GameDetails/GameDetails.js";
 
 export default function Game({ currentGame }) {
-  const currentGameContextValue = {
-    currentGame,
+  const addPlayerInPlayersToFindArray = () => {
+    let playersToFind = [];
+    for (let i = 1; i <= 11; i++) {
+      playersToFind.push({
+        numberPosition: i,
+        lastName: "",
+        answer: "",
+        answerColor: "",
+        clues: [],
+        reveal: false,
+      });
+    }
+    return playersToFind;
   };
-  const teamsContextValue = {
-    team1: currentGame.teams[0].team1
-      ? currentGame.teams[0]
-      : currentGame.teams[1],
-    team2: currentGame.teams[1].team1
-      ? currentGame.teams[0]
-      : currentGame.teams[1],
+
+  const [playersToFindTeam1, setPlayersToFindTeam1] = useState(
+    addPlayerInPlayersToFindArray()
+  );
+  const [playersToFindTeam2, setPlayersToFindTeam2] = useState(
+    addPlayerInPlayersToFindArray()
+  );
+
+  const playersToFindTeams = {
+    playersToFindTeam1,
+    setPlayersToFindTeam1,
+    playersToFindTeam2,
+    setPlayersToFindTeam2,
   };
 
   return (
-    <CurrentGameContext.Provider value={currentGameContextValue}>
-      <TeamsContext.Provider value={teamsContextValue}>
-        <PlayersToFindContextProvider>
-          <SettingsContextProvider>
-            <Layout title={`CompoZ | ${currentGame.title}`}>
-              <div className={styles.gamePage_mainContainer}>
-                <SoccerField />
-                <GameDetails />
-              </div>
-            </Layout>
-          </SettingsContextProvider>
-        </PlayersToFindContextProvider>
-      </TeamsContext.Provider>
-    </CurrentGameContext.Provider>
+    <SettingsContextProvider>
+      <Layout title={`CompoZ | ${currentGame.title}`}>
+        <div className={styles.gamePage_mainContainer}>
+          <SoccerField
+            currentGame={currentGame}
+            playersToFindTeams={playersToFindTeams}
+          />
+          <GameDetails
+            currentGame={currentGame}
+            playersToFindTeams={playersToFindTeams}
+          />
+        </div>
+      </Layout>
+    </SettingsContextProvider>
   );
 }
 
 export async function getStaticProps(context) {
   const slug = context.params.game;
-  const { data } = await axios.get(`${process.env.NEXT_APP_API_URL}/api/game`);
+  const res = await fetch(`${process.env.NEXT_APP_API_URL}/api/game`);
+  const data = await res.json();
 
-  const currentGame = data.find((game) => game.url == slug);
+  const currentGame = data.find((game) => game.url === slug);
 
   return {
     props: {
@@ -58,7 +72,8 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const { data } = await axios.get(`${process.env.NEXT_APP_API_URL}/api/game`);
+  const res = await fetch(`${process.env.NEXT_APP_API_URL}/api/game`);
+  const data = await res.json();
 
   const paths = data.map((item) => ({
     params: { game: item.url },
