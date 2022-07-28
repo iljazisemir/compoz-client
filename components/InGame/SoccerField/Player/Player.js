@@ -23,26 +23,16 @@ export default function Player({
   const inputPlayerRef = useRef([]);
 
   const handlePlayerNumber = (player) => {
-    let revealIsTrue = false;
-    team.players.map((p) => {
-      if (p.numberPosition === player.numberPosition) {
-        if (p.reveal) {
-          revealIsTrue = true;
-        }
-      }
-    });
-    if (
-      player.answer === "correct" ||
-      settingsContextValue.endOfGame ||
-      player.reveal
-    ) {
+    if (player.answer === "correct" || settingsContextValue.endOfGame) {
       return team.players.map((p) => {
-        if (p.numberPosition === player.numberPosition && revealIsTrue) {
-          return (
-            <span className={styles.playerNumber_container} key={p._id}>
-              {p.number}
-            </span>
-          );
+        if (p.numberPosition === player.numberPosition) {
+          if (p.reveal) {
+            return (
+              <span className={styles.playerNumber_container} key={p._id}>
+                {p.number}
+              </span>
+            );
+          }
         }
       });
     }
@@ -131,7 +121,7 @@ export default function Player({
                   );
                 }
               })}
-              {/* {team.players.map((p) => {
+              {team.players.map((p) => {
                 if (
                   p.numberPosition === player.numberPosition &&
                   player.reveal
@@ -142,7 +132,7 @@ export default function Player({
                     </span>
                   );
                 }
-              })} */}
+              })}
               {handlePlayerNumber(player)}
               <JerseySvg
                 className={styles.jersey_svg}
