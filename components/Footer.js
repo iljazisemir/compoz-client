@@ -3,8 +3,8 @@ import styles from "./Components.module.css";
 import Link from "next/link";
 
 // SVG
-import LinkedInSVG from "../styles/svg/LinkedInSVG";
-import GithubSVG from "../styles/svg/GithubSVG";
+import LinkedInSVG from "../components/SVG/LinkedInSVG";
+import GithubSVG from "../components/SVG/GithubSVG";
 
 export default function Footer() {
   return (

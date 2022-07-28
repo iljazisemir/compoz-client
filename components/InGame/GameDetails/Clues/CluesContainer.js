@@ -7,6 +7,7 @@ import { SettingsContext } from "../../../../context/SettingsContext";
 
 export default function CluesContainer() {
   const settingsContextValue = useContext(SettingsContext);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     if (settingsContextValue.clueActivated) {
@@ -18,7 +19,7 @@ export default function CluesContainer() {
   }, [settingsContextValue.clueActivated]);
 
   useEffect(() => {
-    settingsContextValue.setIsMounted(true);
+    setIsMounted(true);
   }, []);
 
   const handlerChoiceOfClue = async (n) => {
@@ -92,7 +93,7 @@ export default function CluesContainer() {
           <div className={styles.clueActivated_container}>3</div>
         )}
       </div>
-      {settingsContextValue.isMounted &&
+      {isMounted &&
         !settingsContextValue.clueActivated &&
         !settingsContextValue.endOfGame &&
         settingsContextValue.gameStarted && (

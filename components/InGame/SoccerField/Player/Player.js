@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { toUpperCaseAndWithoutAccent } from "../../../Utils";
 import styles from "./Player.module.css";
 import ReactTooltip from "react-tooltip";
@@ -11,7 +11,7 @@ import InputPlayer from "../InputPlayer/InputPlayer";
 import NameOfPlayerContainer from "../NameOfPlayerContainer/NameOfPlayerContainer";
 
 // SVG
-import JerseySvg from "../../../../styles/svg/JerseySVG";
+import JerseySvg from "../../../SVG/JerseySVG";
 
 export default function Player({
   playersToFind,
@@ -96,8 +96,9 @@ export default function Player({
       }
     });
   };
-  const handleClickFocusInput = (index) => {
+  const handleClickFocusInput = (index, player) => {
     !settingsContextValue.clueActivated &&
+      player.answer !== "correct" &&
       inputPlayerRef.current[index].focus();
   };
   return (
@@ -110,7 +111,7 @@ export default function Player({
             onClick={
               settingsContextValue.endOfGame
                 ? () => handlerRevealPlayer(player)
-                : () => handleClickFocusInput(index)
+                : () => handleClickFocusInput(index, player)
             }
           >
             <div className={styles.player_container}>

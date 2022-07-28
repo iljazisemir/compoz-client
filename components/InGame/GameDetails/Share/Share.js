@@ -10,8 +10,8 @@ import {
 } from "react-share";
 
 // SVG
-import ClipboardSVG from "../../../../styles/svg/ClipboardSVG";
-import ClipboardCheckSVG from "../../../../styles/svg/ClipboardCheckSVG";
+import ClipboardSVG from "../../../SVG/ClipboardSVG";
+import ClipboardCheckSVG from "../../../SVG/ClipboardCheckSVG";
 
 export default function Share(props) {
   const [copySuccess, setCopySuccess] = useState(false);

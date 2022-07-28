@@ -23,7 +23,6 @@ const SettingsContextProvider = ({ children }) => {
     clue2: true,
     clue3: true,
   });
-  const [isMounted, setIsMounted] = useState(false);
 
   const settingsContextValue = {
     correctPlayers,
@@ -42,13 +41,11 @@ const SettingsContextProvider = ({ children }) => {
     setClueActivated,
     clues,
     setClues,
-    isMounted,
-    setIsMounted,
   };
 
   // useEffect(() => {
-  //   localStorage.setItem("settings", JSON.stringify(settingsContextValue));
-  // }, [settingsContextValue]);
+  //   localStorage.setItem("gameStarted", JSON.stringify(gameStarted));
+  // }, [gameStarted]);
 
   return (
     <SettingsContext.Provider value={settingsContextValue}>

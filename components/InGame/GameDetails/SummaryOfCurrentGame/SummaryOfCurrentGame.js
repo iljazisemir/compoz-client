@@ -9,13 +9,13 @@ import { SettingsContext } from "../../../../context/SettingsContext";
 // COMPONENTS
 import CluesContainer from "../Clues/CluesContainer";
 import ChoiceOfClues from "../Clues/ChoiceOfClues";
+import Share from "../Share/Share";
 
 // SVG
-import HomeSVG from "../../../../styles/svg/HomeSVG";
-import ReplaySVG from "../../../../styles/svg/ReplaySVG";
-import ShareSVG from "../../../../styles/svg/ShareSVG";
-import Share from "../Share/Share";
-import TrophySVG from "../../../../styles/svg/TrophySVG";
+import HomeSVG from "../../../SVG/HomeSVG";
+import ReplaySVG from "../../../SVG/ReplaySVG";
+import ShareSVG from "../../../SVG/ShareSVG";
+import TrophySVG from "../../../SVG/TrophySVG";
 
 export default function SummaryOfCurrentGame({
   currentGame,

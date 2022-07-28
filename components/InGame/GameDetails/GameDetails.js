@@ -12,6 +12,7 @@ import ExplanationRules from "../../HomePage/Rules/ExplanationRules";
 
 export default function GameDetails({ currentGame, playersToFindTeams }) {
   const settingsContextValue = useContext(SettingsContext);
+  const [selectedTab, setSelectedTab] = useState(0);
   const [currentGameTab, setCurrentGameTab] = useState(true);
   const [rulesTab, setRulesTab] = useState(false);
 
@@ -42,6 +43,8 @@ export default function GameDetails({ currentGame, playersToFindTeams }) {
         currentGame={currentGame}
       />
       <TabInCurrentGame
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
         currentGameTab={currentGameTab}
         setCurrentGameTab={setCurrentGameTab}
         rulesTab={rulesTab}
