@@ -31,7 +31,11 @@ export default function Player({
         }
       }
     });
-    if (player.answer === "correct" || settingsContextValue.endOfGame) {
+    if (
+      player.answer === "correct" ||
+      settingsContextValue.endOfGame ||
+      player.reveal
+    ) {
       return team.players.map((p) => {
         if (p.numberPosition === player.numberPosition && revealIsTrue) {
           return (
@@ -127,6 +131,18 @@ export default function Player({
                   );
                 }
               })}
+              {/* {team.players.map((p) => {
+                if (
+                  p.numberPosition === player.numberPosition &&
+                  player.reveal
+                ) {
+                  return (
+                    <span className={styles.playerNumber_container} key={p._id}>
+                      {p.number}
+                    </span>
+                  );
+                }
+              })} */}
               {handlePlayerNumber(player)}
               <JerseySvg
                 className={styles.jersey_svg}

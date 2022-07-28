@@ -85,6 +85,7 @@ const InputPlayer = (
           team.players[player].lastName
         );
         isGoodPlayer(playerToFind, playerToFind.lastName, answerIsWrong);
+        answerIsWrong = false;
         break;
       } else if (
         // WRONG PLAYER
