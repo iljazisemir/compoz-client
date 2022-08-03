@@ -1,7 +1,14 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+
+// CONTEXTS
+import { SettingsContextProvider } from "../context/SettingsContext";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <SettingsContextProvider>
+      <Component {...pageProps} />
+    </SettingsContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

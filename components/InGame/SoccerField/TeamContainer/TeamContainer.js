@@ -13,23 +13,23 @@ export default function TeamContainer({
     let composition;
     switch (team.composition) {
       case "4-4-2":
-        return team.team1
+        return team.home
           ? (composition = styles.dom442)
           : (composition = styles.ext442);
       case "4-1-4-1":
-        return team.team1
+        return team.home
           ? (composition = styles.dom4141)
           : (composition = styles.ext4141);
       case "4-2-3-1":
-        return team.team1
+        return team.home
           ? (composition = styles.dom4231)
           : (composition = styles.ext4231);
       case "4-3-3":
-        return team.team1
+        return team.home
           ? (composition = styles.dom433)
           : (composition = styles.ext433);
       case "4-4-1-1":
-        return team.team1
+        return team.home
           ? (composition = styles.dom4411)
           : (composition = styles.ext4411);
       default:
@@ -60,10 +60,10 @@ export default function TeamContainer({
         team={team}
         placementOfPlayer={(player) => placementOfPlayer(player)}
       />
-      <div className={team.team1 ? styles.cDom : styles.cExt}>
+      <div className={team.home ? styles.cDom : styles.cExt}>
         {team.composition}
       </div>
-      <div className={team.team1 ? styles.flag_team1 : styles.flag_team2}>
+      <div className={team.home ? styles.flag_team1 : styles.flag_team2}>
         <img
           src={`https://countryflagsapi.com/png/${team.nameEN}`}
           className={styles.flag_img}

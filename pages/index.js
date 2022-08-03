@@ -2,7 +2,7 @@ import styles from "../styles/Home.module.css";
 
 // COMPONENTS
 import Layout from "../components/Layout";
-import MainComponent from "../components/HomePage/MainComponent/MainComponent";
+import GamesWrapper from "../components/HomePage/GamesWrapper/GamesWrapper";
 import Rules from "../components/HomePage/Rules/Rules";
 
 export default function Home({ data }) {
@@ -10,7 +10,7 @@ export default function Home({ data }) {
     <>
       <Layout title="CompoZ">
         <div className={styles.homePage_mainContainer}>
-          <MainComponent games={data} />
+          <GamesWrapper games={data} />
           <Rules />
         </div>
       </Layout>

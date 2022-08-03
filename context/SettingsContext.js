@@ -1,5 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
-import localStorage from "localStorage";
+import React, { createContext, useState } from "react";
 
 const SettingsContext = createContext();
 
@@ -42,10 +41,6 @@ const SettingsContextProvider = ({ children }) => {
     clues,
     setClues,
   };
-
-  // useEffect(() => {
-  //   localStorage.setItem("gameStarted", JSON.stringify(gameStarted));
-  // }, [gameStarted]);
 
   return (
     <SettingsContext.Provider value={settingsContextValue}>

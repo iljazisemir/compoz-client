@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { toUpperCaseAndWithoutAccent } from "../../../Utils";
 import styles from "./Player.module.css";
 import ReactTooltip from "react-tooltip";
@@ -22,7 +22,7 @@ export default function Player({
   const settingsContextValue = useContext(SettingsContext);
   const inputPlayerRef = useRef([]);
 
-  const handlePlayerNumber = (player) => {
+  const showPLayerNumber = (player) => {
     if (player.answer === "correct" || settingsContextValue.endOfGame) {
       return team.players.map((p) => {
         if (p.numberPosition === player.numberPosition) {
@@ -133,7 +133,7 @@ export default function Player({
                   );
                 }
               })}
-              {handlePlayerNumber(player)}
+              {showPLayerNumber(player)}
               <JerseySvg
                 className={styles.jersey_svg}
                 style={{ color: team.color }}

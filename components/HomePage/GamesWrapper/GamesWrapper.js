@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-import styles from "./MainComponent.module.css";
+import styles from "./GamesWrapper.module.css";
 
 // COMPONENTS
 import TabInHomePage from "../TabInHomePage/TabInHomePage";
-import ListOfGames from "../ListOfGames/ListOfGames";
+import Game from "../Game/Game";
 
 const COMPETITIONS = ["Coupe du Monde", "Euro"];
 
-export default function MainComponent({ games }) {
+export default function GamesWrapper({ games }) {
   const [selectedCompetition, setSelectedCompetition] = useState(
     COMPETITIONS[0]
   );
@@ -37,7 +37,7 @@ export default function MainComponent({ games }) {
       <div className={styles.listOfGames_mainContainer}>
         <div className={styles.listOfGames_container}>
           {filteredGames?.map((game) => (
-            <ListOfGames key={game._id} currentGame={game} />
+            <Game key={game._id} currentGame={game} />
           ))}
         </div>
       </div>

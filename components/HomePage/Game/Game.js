@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./ListOfGames.module.css";
+import styles from "./Game.module.css";
 import Link from "next/link";
 
-export default function ListOfGames({ currentGame }) {
+export default function Game({ currentGame }) {
   return (
     <Link href={`/game/${currentGame.url}`}>
       <a className={styles.game_container}>

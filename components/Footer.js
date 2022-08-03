@@ -22,7 +22,6 @@ export default function Footer() {
           </a>
         </Link>
       </div>
-      {/* <div>CONDITIONS D'UTILISATION | CONFIDENTIALITÉ | RESSOURCES</div> */}
     </div>
   );
 }

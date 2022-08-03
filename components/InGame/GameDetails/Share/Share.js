@@ -16,7 +16,7 @@ import ClipboardCheckSVG from "../../../SVG/ClipboardCheckSVG";
 export default function Share(props) {
   const [copySuccess, setCopySuccess] = useState(false);
   const textOfShare = `J'ai trouvé ${
-    props.resultOfGame != 0 ? props.resultOfGame : 0
+    props.resultOfGame !== 0 ? props.resultOfGame : 0
   } / 22 joueurs sur CompoZ lors du match historique entre ${
     props.team1.name
   } et ${props.team2.name} en ${
