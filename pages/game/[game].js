@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styles from "./game.module.css";
 
+// CONTEXTS
+import { SettingsContextProvider } from "../../context/SettingsContext";
+
 // COMPONENTS
 import Layout from "../../components/Layout";
 import SoccerField from "../../components/InGame/SoccerField/SoccerField.js";
@@ -37,18 +40,20 @@ export default function Game({ currentGame }) {
   };
 
   return (
-    <Layout title={`CompoZ | ${currentGame.title}`}>
-      <div className={styles.gamePage_mainContainer}>
-        <SoccerField
-          currentGame={currentGame}
-          playersToFindTeams={playersToFindTeams}
-        />
-        <GameDetails
-          currentGame={currentGame}
-          playersToFindTeams={playersToFindTeams}
-        />
-      </div>
-    </Layout>
+    <SettingsContextProvider>
+      <Layout title={`CompoZ | ${currentGame.title}`}>
+        <div className={styles.gamePage_mainContainer}>
+          <SoccerField
+            currentGame={currentGame}
+            playersToFindTeams={playersToFindTeams}
+          />
+          <GameDetails
+            currentGame={currentGame}
+            playersToFindTeams={playersToFindTeams}
+          />
+        </div>
+      </Layout>
+    </SettingsContextProvider>
   );
 }
 

@@ -172,6 +172,42 @@
     ". . . n10 . . ."
     ". . . n11 . . .";
 }
+
+
+/* 4-4-1-1 */
+.dom343 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+    "n11 . . n10 . . n9"
+    ". . . . . . ."
+    "n8 . n7 . n6 . n5"
+    ". . . . . . ."
+    ". n4 . n3 . n2 ."
+    "cDom . . n1 . . flag_team1";
+}
+
+.ext343 {  
+    height: 275px;
+    width: 325px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px 46.42px;
+    grid-template-rows: 45.83px 45.83px 45.83px 45.83px 45.83px 45.83px;
+    grid-template-areas:
+    "cExt . . n1 . . flag_team2"
+    ". n2 . n3 . n4 ."
+    ". . . . . . ."
+    "n5 . n6 . n7 . n8"
+    ". . . . . . ."
+    "n9 . . n10 . . n11";
+}
 /* END COMPOSITIONS */
 
 /* GRID */
