@@ -66,6 +66,7 @@
     overflow-y: auto;
     height: 285px;
     padding-right: 1px;
+    font-size: 16px;
 }
 
 .gameActionList_container::-webkit-scrollbar {
@@ -82,8 +83,12 @@
 
 .summaryOfGameForObject_container {
     display: flex;
-    font-size: 15px;
+    font-size: 16px;
     flex-wrap: wrap;
+}
+
+.textInGame {
+    font-size: 16px;
 }
 
 .circleAnswerColor_div {

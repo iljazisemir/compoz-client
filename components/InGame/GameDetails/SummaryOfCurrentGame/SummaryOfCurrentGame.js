@@ -138,7 +138,9 @@ export default function SummaryOfCurrentGame({
                 </span>
               </div>
             ) : (
-              <div key={index}>{action}</div>
+              <div key={index} className={styles.textInGame}>
+                {action.toUpperCase()}
+              </div>
             );
           })}
         <ChoiceOfClues

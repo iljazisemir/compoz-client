@@ -4,21 +4,21 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .playerPosition_container {
     position: absolute;
     top: 8%;
-    right: 8%;
-    font-size: 8px;
+    right: 6%;
+    font-size: 10px;
 }
 
 .playerNumber_container {
     position: absolute;
     top: 8%;
-    left: 12%;
-    font-size: 9px;
+    left: 10%;
+    font-size: 11px;
 }
 
 .jersey_svg {
@@ -34,7 +34,7 @@
     text-overflow:ellipsis;
     white-space: nowrap;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .listOfClues_container {

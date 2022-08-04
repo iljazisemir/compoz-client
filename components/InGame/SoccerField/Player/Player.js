@@ -91,10 +91,16 @@ export default function Player({
     });
   };
   const handleClickFocusInput = (index, player) => {
-    !settingsContextValue.clueActivated &&
+    settingsContextValue.gameStarted &&
+      !settingsContextValue.clueActivated &&
       player.answer !== "correct" &&
       inputPlayerRef.current[index].focus();
   };
+
+  const cursorPlayer =
+    !settingsContextValue.gameStarted && !settingsContextValue.endOfGame
+      ? "default"
+      : "pointer";
   return (
     <>
       {playersToFind?.map((player, index) => {
@@ -108,7 +114,10 @@ export default function Player({
                 : () => handleClickFocusInput(index, player)
             }
           >
-            <div className={styles.player_container}>
+            <div
+              className={styles.player_container}
+              style={{ cursor: cursorPlayer }}
+            >
               {team.players.map((teamPlayer) => {
                 if (teamPlayer.numberPosition === player.numberPosition) {
                   return (
