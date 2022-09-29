@@ -2,6 +2,7 @@ import React, { useContext, useState, forwardRef } from "react";
 import styles from "./InputPlayer.module.css";
 import { toUpperCaseAndWithoutAccent } from "../../../Utils";
 import ReactTooltip from "react-tooltip";
+const levenshtein = require("fast-levenshtein");
 
 // CONTEXTS
 import { SettingsContext } from "../../../../context/SettingsContext";
@@ -65,8 +66,8 @@ const InputPlayer = (
       } else if (
         // GOOD PLAYER BUT NOT RIGHT POSITION
         team.players[player].numberPosition !== playerToFind.numberPosition &&
-        checkSameLastNamePlayerIsTrue &&
-        handleSpellCheck(playerToFind.lastName, playerLastName)
+        (checkSameLastNamePlayerIsTrue ||
+          handleSpellCheck(playerToFind.lastName, playerLastName))
       ) {
         isGoodPlayerButNotRightPosition(
           player,
@@ -76,7 +77,7 @@ const InputPlayer = (
         answerIsWrong = false;
         break;
       }
-      // LESS THAN 30% FAULTS
+      // LESS THAN 20% FAULTS
       else if (
         team.players[player].numberPosition === playerToFind.numberPosition &&
         handleSpellCheck(playerToFind.lastName, playerLastName)
@@ -146,54 +147,65 @@ const InputPlayer = (
     setListOfWrongAnswers(newListOfWrongAnswers);
   };
   const handleSpellCheck = (playerToFind, thePlayer) => {
-    let arrayOfPlayerToFindLettersChart = playerToFind.split("").sort();
-    let arrayOfPlayerLettersChart = thePlayer.split("").sort();
-    let numberOfFaults = 0;
+    // let arrayOfPlayerToFindLettersChart = playerToFind.split("").sort();
+    // let arrayOfPlayerLettersChart = thePlayer.split("").sort();
+    // let numberOfFaults = 0;
     const playerNameLength = thePlayer.length;
-    let newArrayOfPlayerToFindLettersChart = arrayOfPlayerToFindLettersChart;
-    let newArrayOfPlayerLettersChart = arrayOfPlayerLettersChart;
+    // let newArrayOfPlayerToFindLettersChart = arrayOfPlayerToFindLettersChart;
+    // let newArrayOfPlayerLettersChart = arrayOfPlayerLettersChart;
+
+    // if (
+    //   arrayOfPlayerLettersChart.length > arrayOfPlayerToFindLettersChart.length
+    // ) {
+    //   for (
+    //     let k = arrayOfPlayerToFindLettersChart.length;
+    //     k < arrayOfPlayerLettersChart.length;
+    //     k++
+    //   ) {
+    //     newArrayOfPlayerToFindLettersChart.push(".");
+    //   }
+    //   arrayOfPlayerToFindLettersChart = newArrayOfPlayerToFindLettersChart;
+    // }
+
+    // if (
+    //   arrayOfPlayerLettersChart.length < arrayOfPlayerToFindLettersChart.length
+    // ) {
+    //   for (
+    //     let l = arrayOfPlayerLettersChart.length;
+    //     l < arrayOfPlayerToFindLettersChart.length;
+    //     l++
+    //   ) {
+    //     newArrayOfPlayerLettersChart.push(".");
+    //   }
+    //   arrayOfPlayerLettersChart = newArrayOfPlayerLettersChart;
+    // }
+
+    // for (let i = 0; i < arrayOfPlayerToFindLettersChart.length; i++) {
+    //   let sameLetter = false;
+    //   arrayOfPlayerLettersChart = newArrayOfPlayerLettersChart;
+    //   for (let j = 0; j < newArrayOfPlayerLettersChart.length; j++) {
+    //     if (
+    //       arrayOfPlayerToFindLettersChart[i] === arrayOfPlayerLettersChart[j]
+    //     ) {
+    //       newArrayOfPlayerLettersChart.splice(j, 1);
+    //       sameLetter = true;
+    //     }
+    //   }
+    //   !sameLetter && numberOfFaults++;
+    // }
+
+    // if ((numberOfFaults / playerNameLength) * 100 <= 20) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+
+    let distance = levenshtein.get(playerToFind, thePlayer);
 
     if (
-      arrayOfPlayerLettersChart.length > arrayOfPlayerToFindLettersChart.length
+      (distance / playerNameLength) * 100 <= 20 &&
+      playerToFind[0] === thePlayer[0]
     ) {
-      for (
-        let k = arrayOfPlayerToFindLettersChart.length;
-        k < arrayOfPlayerLettersChart.length;
-        k++
-      ) {
-        newArrayOfPlayerToFindLettersChart.push(".");
-      }
-      arrayOfPlayerToFindLettersChart = newArrayOfPlayerToFindLettersChart;
-    }
-
-    if (
-      arrayOfPlayerLettersChart.length < arrayOfPlayerToFindLettersChart.length
-    ) {
-      for (
-        let l = arrayOfPlayerLettersChart.length;
-        l < arrayOfPlayerToFindLettersChart.length;
-        l++
-      ) {
-        newArrayOfPlayerLettersChart.push(".");
-      }
-      arrayOfPlayerLettersChart = newArrayOfPlayerLettersChart;
-    }
-
-    for (let i = 0; i < arrayOfPlayerToFindLettersChart.length; i++) {
-      let sameLetter = false;
-      arrayOfPlayerLettersChart = newArrayOfPlayerLettersChart;
-      for (let j = 0; j < newArrayOfPlayerLettersChart.length; j++) {
-        if (
-          arrayOfPlayerToFindLettersChart[i] === arrayOfPlayerLettersChart[j]
-        ) {
-          newArrayOfPlayerLettersChart.splice(j, 1);
-          sameLetter = true;
-        }
-      }
-      !sameLetter && numberOfFaults++;
-    }
-
-    if ((numberOfFaults / playerNameLength) * 100 <= 30) {
       return true;
     } else {
       return false;
@@ -218,7 +230,7 @@ const InputPlayer = (
         ...settingsContextValue.summaryOfGame,
         {
           answerColor: "#ff9f40",
-          player: playerToFind.lastName,
+          player: toUpperCaseAndWithoutAccent(team.players[player].lastName),
           teamName: team.name,
           text: !playerAlreadyFound
             ? "Mauvais poste : "

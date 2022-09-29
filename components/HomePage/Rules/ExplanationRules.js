@@ -27,7 +27,7 @@ export default function ExplanationRules() {
       <p>Quelques détails concernant le nom du joueur : </p>
       <li>Entrez uniquement le nom</li>
       <li>Les accents ne sont pas pris en compte</li>
-      <li>30 % de fautes sur le nom est autorisé</li>
+      <li>20 % de fautes sur le nom est autorisé</li>
       <li>Deux lettres minimums</li>
       <p>
         Vous aurez des couleurs qui indiqueront le résultat de votre réponse :
