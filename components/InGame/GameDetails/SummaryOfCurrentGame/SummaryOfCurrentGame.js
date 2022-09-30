@@ -16,6 +16,8 @@ import HomeSVG from "../../../SVG/HomeSVG";
 import ReplaySVG from "../../../SVG/ReplaySVG";
 import ShareSVG from "../../../SVG/ShareSVG";
 import TrophySVG from "../../../SVG/TrophySVG";
+import CheckSVG from "../../../SVG/CheckSVG";
+import BallSVG from "../../../SVG/BallSVG";
 
 export default function SummaryOfCurrentGame({
   currentGame,
@@ -114,26 +116,27 @@ export default function SummaryOfCurrentGame({
               >
                 <div
                   className={styles.circleAnswerColor_div}
-                  style={{ backgroundColor: action.answerColor }}
-                ></div>
-                <span
-                  className={styles.textInSummary_span}
                   style={{
-                    color:
+                    backgroundColor:
                       action.teamName === team1.name
                         ? team1.color
                         : team2.color,
                   }}
-                >
+                ></div>
+                <span className={styles.textInSummary_span}>
                   {action.teamName.toUpperCase()}
                 </span>
                 <div className={styles.textInSummary_span}>
                   - {action.text.toUpperCase()}
                 </div>
-                <span
-                  className={styles.textInSummary_span}
-                  style={{ color: action.answerColor }}
-                >
+                <BallSVG
+                  className={styles.check_svg}
+                  style={{
+                    color: action.answerColor,
+                  }}
+                />
+                <div style={{ margin: "0 5px" }}>:</div>
+                <span className={styles.textInSummary_span}>
                   {action.player}
                 </span>
               </div>

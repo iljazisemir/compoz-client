@@ -147,60 +147,8 @@ const InputPlayer = (
     setListOfWrongAnswers(newListOfWrongAnswers);
   };
   const handleSpellCheck = (playerToFind, thePlayer) => {
-    // let arrayOfPlayerToFindLettersChart = playerToFind.split("").sort();
-    // let arrayOfPlayerLettersChart = thePlayer.split("").sort();
-    // let numberOfFaults = 0;
     const playerNameLength = thePlayer.length;
-    // let newArrayOfPlayerToFindLettersChart = arrayOfPlayerToFindLettersChart;
-    // let newArrayOfPlayerLettersChart = arrayOfPlayerLettersChart;
-
-    // if (
-    //   arrayOfPlayerLettersChart.length > arrayOfPlayerToFindLettersChart.length
-    // ) {
-    //   for (
-    //     let k = arrayOfPlayerToFindLettersChart.length;
-    //     k < arrayOfPlayerLettersChart.length;
-    //     k++
-    //   ) {
-    //     newArrayOfPlayerToFindLettersChart.push(".");
-    //   }
-    //   arrayOfPlayerToFindLettersChart = newArrayOfPlayerToFindLettersChart;
-    // }
-
-    // if (
-    //   arrayOfPlayerLettersChart.length < arrayOfPlayerToFindLettersChart.length
-    // ) {
-    //   for (
-    //     let l = arrayOfPlayerLettersChart.length;
-    //     l < arrayOfPlayerToFindLettersChart.length;
-    //     l++
-    //   ) {
-    //     newArrayOfPlayerLettersChart.push(".");
-    //   }
-    //   arrayOfPlayerLettersChart = newArrayOfPlayerLettersChart;
-    // }
-
-    // for (let i = 0; i < arrayOfPlayerToFindLettersChart.length; i++) {
-    //   let sameLetter = false;
-    //   arrayOfPlayerLettersChart = newArrayOfPlayerLettersChart;
-    //   for (let j = 0; j < newArrayOfPlayerLettersChart.length; j++) {
-    //     if (
-    //       arrayOfPlayerToFindLettersChart[i] === arrayOfPlayerLettersChart[j]
-    //     ) {
-    //       newArrayOfPlayerLettersChart.splice(j, 1);
-    //       sameLetter = true;
-    //     }
-    //   }
-    //   !sameLetter && numberOfFaults++;
-    // }
-
-    // if ((numberOfFaults / playerNameLength) * 100 <= 20) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-
-    let distance = levenshtein.get(playerToFind, thePlayer);
+    const distance = levenshtein.get(playerToFind, thePlayer);
 
     if (
       (distance / playerNameLength) * 100 <= 20 &&
@@ -232,9 +180,7 @@ const InputPlayer = (
           answerColor: "#ff9f40",
           player: toUpperCaseAndWithoutAccent(team.players[player].lastName),
           teamName: team.name,
-          text: !playerAlreadyFound
-            ? "Mauvais poste : "
-            : "Joueur déjà trouvé : ",
+          text: !playerAlreadyFound ? "Mauvais poste" : "Joueur déjà trouvé",
         },
       ]);
     });
@@ -253,7 +199,7 @@ const InputPlayer = (
         answerColor: "#228b22",
         player: playerLastName,
         teamName: team.name,
-        text: "Joueur trouvé : ",
+        text: "Joueur trouvé",
       },
     ]);
   };
@@ -264,7 +210,7 @@ const InputPlayer = (
         answerColor: "#ff4040",
         player: playerToFind.lastName,
         teamName: team.name,
-        text: "Joueur déjà essayé : ",
+        text: "Joueur déjà essayé",
       },
     ]);
   };
@@ -275,7 +221,7 @@ const InputPlayer = (
         answerColor: "#ff4040",
         player: playerToFind.lastName,
         teamName: team.name,
-        text: "Mauvais joueur : ",
+        text: "Mauvais joueur",
       },
     ]);
   };
