@@ -248,12 +248,6 @@ const InputPlayer = (
             ref={(element) => {
               ref.current[index] = element;
             }}
-            // style={{
-            //   backgroundColor:
-            //     player.answer &&
-            //     // player.lastName.length > 0 &&
-            //     player.answerColor,
-            // }}
             className={
               settingsContextValue.targetPlayer.target &&
               settingsContextValue.targetPlayer.numberPosition ===

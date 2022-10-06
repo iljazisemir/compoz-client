@@ -177,7 +177,10 @@
     margin-left: 5px;
 }
 
-.check_svg {
-    height: 15px;
+.ball_svg{
+    height: 25px;
+    width: 25px;
     margin-top: 2px;
+    display: flex;
+    margin-right: -10px;
 }

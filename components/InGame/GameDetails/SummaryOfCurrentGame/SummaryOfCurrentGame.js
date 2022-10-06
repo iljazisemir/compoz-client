@@ -130,7 +130,7 @@ export default function SummaryOfCurrentGame({
                   - {action.text.toUpperCase()}
                 </div>
                 <BallSVG
-                  className={styles.check_svg}
+                  className={styles.ball_svg}
                   style={{
                     color: action.answerColor,
                   }}
