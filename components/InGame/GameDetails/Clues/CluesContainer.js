@@ -58,6 +58,7 @@ export default function CluesContainer() {
             onClick={() => handlerChoiceOfClue(1)}
             data-tip="Lovely colors!"
             data-for="indice"
+            data-text-color="black"
           >
             1
           </div>
@@ -71,6 +72,7 @@ export default function CluesContainer() {
             className={styles.clue_container}
             onClick={() => handlerChoiceOfClue(2)}
             data-tip="Lovely colors!"
+            data-text-color="black"
             data-for="indice"
           >
             2
@@ -85,6 +87,7 @@ export default function CluesContainer() {
             className={styles.clue_container}
             onClick={() => handlerChoiceOfClue(3)}
             data-tip="Lovely colors!"
+            data-text-color="black"
             data-for="indice"
           >
             3

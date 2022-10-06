@@ -13,6 +13,7 @@
     border-radius: 10px;
     background-color: #ffd300;
     cursor: pointer;
+    color : black
 }
 
 .clue_container:hover {
@@ -31,6 +32,7 @@
     background-color: #ffd300;
     opacity: 0.4;
     cursor:default;
+    color : black
 }
 
 .choiceOfClues_container {
@@ -51,6 +53,7 @@
     border-radius: 10px;
     background-color: #ffd300;
     cursor: pointer;
+    color : black
 }
 
 .choiceOfClue_container:hover {
@@ -74,4 +77,5 @@
     font-size: 15px;
     opacity: 0.4;
     cursor:default;
+    color : black
 }

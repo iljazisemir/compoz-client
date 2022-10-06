@@ -49,7 +49,7 @@ export default function Player({
             team: team.name,
             numberPosition: p.numberPosition,
             firstLetter: Array.from(p.lastName)[0],
-            number: p.number,
+            firstName: p.firstName,
             club: p.club,
           });
       } else if (

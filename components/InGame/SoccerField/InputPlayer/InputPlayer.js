@@ -1,8 +1,9 @@
-import React, { useContext, useState, forwardRef } from "react";
+import React, { useContext, useState, forwardRef, useEffect } from "react";
 import styles from "./InputPlayer.module.css";
 import { toUpperCaseAndWithoutAccent } from "../../../Utils";
 import ReactTooltip from "react-tooltip";
 const levenshtein = require("fast-levenshtein");
+import BallSVG from "../../../SVG/BallSVG";
 
 // CONTEXTS
 import { SettingsContext } from "../../../../context/SettingsContext";
@@ -13,6 +14,8 @@ const InputPlayer = (
 ) => {
   const settingsContextValue = useContext(SettingsContext);
   const [listOfWrongAnswers, setListOfWrongAnswers] = useState([]);
+  const [answerColorForBall, setAnswerColorForBall] = useState("");
+
   const handlerInputPlayer = (e, index) => {
     e.preventDefault();
     let newPlayersToFind = [...playersToFind];
@@ -44,7 +47,7 @@ const InputPlayer = (
       );
     }
   };
-  const handleComparedPlayer = (e, team, playerToFind) => {
+  const handleComparedPlayer = async (e, team, playerToFind) => {
     e.preventDefault();
     let newPlayersToFind = [...playersToFind];
     let answerIsWrong = false;
@@ -112,21 +115,22 @@ const InputPlayer = (
         }
       }
     }
+
     if (answerIsWrong === true) {
       settingsContextValue.setWrongAnswerCounter(
         settingsContextValue.wrongAnswerCounter + 1
       );
+      playerToFind.answerColor = "#ff4040";
+      setAnswerColorForBall("#ff4040");
       playerToFind.lastName = "";
       answerIsWrong = false;
-    }
-    if (
+    } else if (
       (answerIsWrong === false && playerToFind.answer === "warning") ||
       (answerIsWrong === false && playerToFind.answer === "wrong")
     ) {
+      playerToFind.answerColor = "#ff9f40";
+      setAnswerColorForBall("#ff9f40");
       playerToFind.lastName = "";
-    }
-    if (playerToFind.lastName === "") {
-      playerToFind.answerColor = "#3BC68D";
     }
 
     setPlayersToFind(newPlayersToFind);
@@ -230,18 +234,26 @@ const InputPlayer = (
     <>
       <form action="" onSubmit={(e) => handleComparedPlayer(e, team, player)}>
         <div>
+          {answerColorForBall && (
+            <BallSVG
+              className={styles.ball_svg}
+              style={{
+                color: answerColorForBall,
+              }}
+            />
+          )}
           <input
             type="text"
             name="playerToFind"
             ref={(element) => {
               ref.current[index] = element;
             }}
-            style={{
-              backgroundColor:
-                player.answer &&
-                player.lastName.length > 0 &&
-                player.answerColor,
-            }}
+            // style={{
+            //   backgroundColor:
+            //     player.answer &&
+            //     // player.lastName.length > 0 &&
+            //     player.answerColor,
+            // }}
             className={
               settingsContextValue.targetPlayer.target &&
               settingsContextValue.targetPlayer.numberPosition ===
@@ -255,6 +267,7 @@ const InputPlayer = (
             onChange={(e) => handlerInputPlayer(e, index)}
             value={player.lastName}
             data-tip="Lovely colors!"
+            data-text-color="black"
             data-for={player.lastName + player.numberPosition + team.name}
           />
         </div>

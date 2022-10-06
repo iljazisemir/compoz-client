@@ -17,6 +17,7 @@ export default function NameContainerOfPlayer({ player, playerNotFound }) {
             }
       }
       data-tip="Lovely colors!"
+      data-text-color="black"
       data-for={player.lastName}
     >
       {toUpperCaseAndWithoutAccent(player.lastName)}

@@ -11,10 +11,10 @@ export default function ChoiceOfClues({ currentGame, playersToFindTeams }) {
     let clueText = "";
     if (targetElement === targetPlayer.firstLetter) {
       clueText = "Première lettre : ";
-    } else if (targetElement === targetPlayer.number) {
-      clueText = "Numéro du maillot : ";
+    } else if (targetElement === targetPlayer.firstName) {
+      clueText = "Prénom : ";
     } else if (targetElement === targetPlayer.club) {
-      clueText = "Club du joueur : ";
+      clueText = "Club : ";
     }
     settingsContextValue.setSummaryOfGame([
       ...settingsContextValue.summaryOfGame,
@@ -38,7 +38,7 @@ export default function ChoiceOfClues({ currentGame, playersToFindTeams }) {
       target: false,
       team: "",
       firstLetter: "",
-      number: "",
+      firstName: "",
       club: "",
     });
   };
@@ -109,13 +109,13 @@ export default function ChoiceOfClues({ currentGame, playersToFindTeams }) {
               "1re Lettre"
             )}
             {handleChoiceOfClueIsAlreadyUsed(
-              settingsContextValue.targetPlayer.number,
+              settingsContextValue.targetPlayer.firstName,
               settingsContextValue.targetPlayer,
               settingsContextValue.targetPlayer.team ===
                 currentGame.teams[0].name
                 ? playersToFindTeams.playersToFindTeam1
                 : playersToFindTeams.playersToFindTeam2,
-              "N°"
+              "Prénom"
             )}
             {handleChoiceOfClueIsAlreadyUsed(
               settingsContextValue.targetPlayer.club,

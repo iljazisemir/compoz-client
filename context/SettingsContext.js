@@ -13,7 +13,7 @@ const SettingsContextProvider = ({ children }) => {
     team: "",
     numberPosition: "",
     firstLetter: "",
-    number: "",
+    firstName: "",
     club: "",
   });
   const [clueActivated, setClueActivated] = useState(false);
