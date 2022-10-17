@@ -32,10 +32,26 @@ export default function TeamContainer({
         return team.home
           ? (composition = styles.dom4411)
           : (composition = styles.ext4411);
-          case "3-4-3":
-            return team.home
-              ? (composition = styles.dom343)
-              : (composition = styles.ext343);
+      case "3-4-3":
+        return team.home
+          ? (composition = styles.dom343)
+          : (composition = styles.ext343);
+      case "5-3-2":
+        return team.home
+          ? (composition = styles.dom532)
+          : (composition = styles.ext532);
+      case "4-3-1-2":
+        return team.home
+          ? (composition = styles.dom4312)
+          : (composition = styles.ext4312);
+      case "4-2-2-2":
+        return team.home
+          ? (composition = styles.dom4222)
+          : (composition = styles.ext4222);
+      case "4-1-3-2":
+        return team.home
+          ? (composition = styles.dom4132)
+          : (composition = styles.ext4132);
       default:
         return null;
     }

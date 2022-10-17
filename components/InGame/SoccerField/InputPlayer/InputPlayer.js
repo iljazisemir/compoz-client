@@ -1,4 +1,4 @@
-import React, { useContext, useState, forwardRef, useEffect } from "react";
+import React, { useContext, useState, forwardRef } from "react";
 import styles from "./InputPlayer.module.css";
 import { toUpperCaseAndWithoutAccent } from "../../../Utils";
 import ReactTooltip from "react-tooltip";
